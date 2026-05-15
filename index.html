@@ -1,294 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
-  <title>Elixir Style Animation Slider</title>
+  <meta charset="UTF-8">
+  
+  <!-- iPhone Full Screen (Standalone Mode) के लिए विशिष्ट Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Armed Forces">
+  
+  <!-- स्क्रीन को फिट करने और ज़ूम रोकने के लिए (App Feel) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
+  
+  <!-- होम स्क्रीन आइकॉन -->
+  <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png">
+
+  <title>Official Portal</title>
   <style>
-    html, body {
-      margin: 0; padding: 0;
-      height: 100%; width:100vw;
-      overflow: hidden;
-      -webkit-user-select: none;
-      user-select: none;
-      background: #181818;
+    :root {
+      --logo-size: 140px; 
+      --primary: #36379e;
+      --secondary: #e76060;
+      --gold: #FFD700;
     }
-    body {
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body, html {
+      height: 100%; width: 100vw;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+    }
+
+    /* --- 1. प्रीलोडर सेक्शन (5 Seconds) --- */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdI2QxJb5zX481BhDXNyjuMZ-S1qf-jgD_BRAgdLvw-VSoxvggNs4kZHuQuAwBv8W0Xf8cIdZ9Fo6X5V3w8RRrWUdeRHnAsrVabO-yivbORFqdiSkvQPWXemTt-_c2wWrBxM1qfZkWeDZJ84k2pGV5AyDpT72jHarDlTwudlPDp7qJVYljzWK6-SiQBhbn/s1920/Add%20a%20heading.jpeg') no-repeat center center;
+      background-size: cover;
+    }
+
+    .preloader-container {
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
-      min-height: 100vh;
-      width: 100vw;
+    }
+
+    /* लोगो कंटेनर शाइन और शैडो के लिए */
+    .logo-wrapper {
       position: relative;
-      font-family: 'Segoe UI', sans-serif;
+      width: var(--logo-size);
+      height: auto;
+      display: inline-block;
+      overflow: hidden; 
+      border-radius: 8px;
+      animation: logoGlow 2s ease-in-out infinite alternate;
     }
-    .preloader {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: #181818;
-      z-index: 9999;
-    }
-    .preloader img {
-      width: 180px; /* आप यहां साइज बदल सकते हैं */
-      height: 120px;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 6px 22px #0009;
-      background: #fff;
-    }
-    .hidden {
-      display: none !important;
-    }
-    .slider-wrapper {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      bottom: 100px;
-      width: 100vw;
-      height: calc(100vh - 100px);
-      z-index: 1;
-      overflow: hidden;
-    }
-    .slider-img {
-      position: absolute;
-      width: 100vw;
-      height: 100%;
-      left: 0;
-      top: 0;
-      object-fit: cover;
+
+    .preloader-logo {
+      width: 100%;
+      height: auto;
+      display: block;
       opacity: 0;
-      will-change: transform, opacity;
-      transition: opacity 1s, transform 5s;
-      pointer-events: none;
+      transform: scale(0.5);
+      animation: logoZoom 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
-    .slider-img.active {
-      opacity: 1;
-      z-index: 2;
-      transform: scale(1.08);
-      transition: opacity 1s, transform 5s;
+
+    .logo-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      animation: shine 3s ease-in-out infinite;
+      animation-delay: 1.5s; 
     }
-    .button-row {
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      gap: 18px;
+
+    .preloader-text {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 800;
+      color: white;
+      text-transform: uppercase;
+      opacity: 0;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      animation: textSmoothReveal 2s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+    }
+
+    @keyframes logoZoom {
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes logoGlow {
+      0% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); }
+      100% { box-shadow: 0 0 35px rgba(255, 255, 255, 0.7); }
+    }
+
+    @keyframes shine {
+      100% { left: 150%; }
+    }
+
+    @keyframes textSmoothReveal {
+      0% { opacity: 0; letter-spacing: -5px; filter: blur(10px); }
+      50% { opacity: 0.5; filter: blur(3px); }
+      100% { opacity: 1; letter-spacing: 3px; filter: blur(0); }
+    }
+
+    /* --- 2. मुख्य लॉगिन पेज --- */
+    #mainContent {
+      display: none;
+      height: 100%;
+      width: 100%;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9ZZbUSTg0UC7EKdAgZx9415RAvZvrX7cF7Q7ngf4RjiCy2bVEVJNKS0Y_ymUAppjfJZWlZtPY6n4e2IToZJqLc_tZR1g0puXfhugOezfjoY02HuFeuac_YlBeF7qq8lRDKsD3CPA-E0yuDbHMDcBJ2nLVIHK3D2WZUdP8mc9teLt_BSe4Dg9HE04DHHx/s1920/Add%20a%20heading.jpeg') no-repeat center center;
+      background-size: cover;
+      position: relative;
+    }
+
+    .login-box {
       position: absolute;
       bottom: 120px;
-      left: 0;
-      z-index: 5;
-      margin-bottom: 0;
-    }
-    .link-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      width: 62px;
-      height: 62px;
-      border-radius: 15px;
-      border: none;
-      background: linear-gradient(90deg, #36379e 50%, #e76060 100%);
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 6px 18px #0005;
-      font-weight: 600;
-      cursor: pointer;
-      min-width: 62px;
-      outline: none;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.25s, transform 0.2s;
-      touch-action: manipulation;
-      letter-spacing: .03em;
-      user-select: none;
-      pointer-events: auto;
-    }
-    .link-btn:active {
-      transform: scale(0.95);
-    }
-    .link-btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 15px;
-      z-index: 0;
-    }
-    .link-btn img {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-      user-select: none;
-      animation: circleAnimation 4s linear infinite;
-      transform-origin: center;
-    }
-    .spinner {
-      display: none;
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top: 4px solid #fff;
-      width: 40px;
-      height: 40px;
-      animation: spin 0.8s linear infinite;
-      position: absolute;
-      left: 50%; 
-      top: 50%; 
-      transform: translate(-50%, -50%);
-      z-index: 10;
-    }
-    .link-btn.loading {
-      pointer-events: none;
-    }
-    .link-btn.loading::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      z-index: 5;
-    }
-    .link-btn.loading .spinner {
-      display: block;
-    }
-    .link-btn.loading img {
-      opacity: 0.3;
-    }
-    .credit-bar {
-      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 350px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       text-align: center;
-      color: #9ea6b8;
-      font-size: 14px;
-      background: rgba(2,9,29,0.88);
-      padding: 8px 0;
-      letter-spacing: 1.5px;
-      z-index: 7;
+      animation: fadeIn 1s ease-out;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #111;
+      font-size: 13px;
+      text-align: center;
+      font-weight: 600;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #errorNote {
+      color: #ff4d4d;
+      font-size: 11px;
+      margin-bottom: 10px;
+      display: none;
+      font-weight: bold;
+    }
+
+    .loader-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 11000;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .spinner {
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top: 3px solid var(--secondary);
+      border-radius: 50%;
+      width: 45px; height: 45px;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, 15px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    .footer-text {
       position: absolute;
-      left: 0;
-      bottom: 38px;
-      font-family: Arial, sans-serif;
-      font-weight: 500;
-      box-shadow: 0 -3px 16px #0002;
-      user-select: none;
-      pointer-events: none;
-    }
-    img, .slider-img {
-      -webkit-touch-callout: none;
-      -webkit-user-drag: none;
-      user-drag: none;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-    body, * {
-      -webkit-tap-highlight-color: transparent;
-    }
-    @keyframes spin {
-      0%   { transform: translate(-50%, -50%) rotate(0deg);}
-      100% { transform: translate(-50%, -50%) rotate(360deg);}
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      letter-spacing: 1px;
+      font-weight: 800;
     }
   </style>
 </head>
 <body oncontextmenu="return false;">
 
-  <!-- Preloader -->
-  <div class="preloader" id="preloader">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Flag_of_Indian_Armed_Forces.svg/1024px-Flag_of_Indian_Armed_Forces.svg.png"
-         alt="preloader" draggable="false" style="width:180px;height:120px;" />
+  <!-- प्रीलोडर सेक्शन -->
+  <div id="preloader">
+    <div class="preloader-container">
+      <div class="logo-wrapper">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Logo" class="preloader-logo">
+      </div>
+      <div class="preloader-text">INDIAN ARMED FORCES</div>
+    </div>
   </div>
 
-  <!-- Original slider elements hidden initially -->
-  <div class="slider-wrapper" id="sliderWrapper" style="display:none;">
-    <img class="slider-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjll7_Ui155nqSpOKkKVuCcOe0anLzQhGtTgZXdFB6DT5puGYPbWpD3hL0WfUlSdoEVIv37kUABvVIO8gTuqSepv8rUcJT_6Pl3DYQfRN9nLmx7lwSxdM4d2ALBJoBYCJ9BTx0iJrW-u_LSGh-A5aR5ZwuvarNjQYg7IdZOajAs3OmPJXeHYM80Uob-QEI/s2000/Simple%20Border%20Stationery%20Paper%20A4%20Document.jpeg" alt="" draggable="false">
+  <!-- रिडायरेक्ट लोडिंग -->
+  <div class="loader-overlay" id="loadingScreen">
+    <div class="spinner"></div>
+    <p style="font-size: 13px; letter-spacing: 1px;">AUTHENTICATING...</p>
   </div>
 
-  <div class="button-row" id="buttonRow" style="display:none;">
-    <a href="#" class="link-btn" data-url="https://manishchaudhary525.github.io/id/">
-      <div class="spinner"></div>
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPgdeoxx9aDcfuVe2u9FknDJVnK4bu4wSi6IRZBzkR9H1gBnjVGL-_P945mkOccRpLbsVTKd2XJArRzC6gbTeIK4IFo5B96sPazcqJwtuyxH3j9aRKdXf4BTZ1apbnllUHo8WwVR8quuUST50lB4fgU74JNjW82AxNy2_Fk2GM93_o_L7QibKSxjlECm8/s1800/Copy%20of%20SGMC%20NEW%20-%203.jpeg" alt="icon1" draggable="false">
-    </a>
-    <a href="#" class="link-btn" data-url="https://manishchaudhary525.github.io/scan/">
-      <div class="spinner"></div>
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdXJt_QTNpN3h0GX15bA_b9M9z4ve89ZMy3E8jnFBlp7xDF-Zt956sDr3POKxOnrJPh1nf9j1ISQ-6TKoKKswywMMxvtXE7ECoM3ENCi7LENv6zByyEcWV8zRUwdwbzDINRygHfJc6PToeSlbg82pbAzWFlMXtrpoyZjnnggvi6U71KpdYc2Q5ZCpFsR4/s1800/Copy%20of%20SGMC%20NEW%20-%204.jpeg" alt="icon2" draggable="false">
-    </a>
-    <a href="#" class="link-btn" data-url="https://manishchaudhary525.github.io/dashboard/">
-      <div class="spinner"></div>
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg6HrMnFBWMoxoJTTAEIywG27-wRWfJzE9TccNIZjuEMgo7FMdlySIv_io3UrxX4WObCT76dG7PnpwYvqdV-1vtbw6h5nKM5iBb4AU9rTXIi9Rg4pNPZy9qqGiGMhp3MM0GwlofkzEWLFuyrWoHma6lzymBQXZ0F8clQAc0UnZDs5zCsmzFJBPwK2sdJMA/s1800/Copy%20of%20SGMC%20NEW%20-%205.jpeg" alt="icon3" draggable="false">
-    </a>
-    <a href="#" class="link-btn" data-url="https://manishchaudhary525.github.io/Demo/">
-      <div class="spinner"></div>
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjU-J2LNIurcg4rJEmCF1XTw1-79pljSyse1SH88QCuaGyL7LlZX_vePeC9PFwUZ6NRP6dCZUt-x-em6xaC90Jr36kfcuywDWj4YmlsDHPz0mRlTN8jAGHjEiywrzzYJrt_t5m5F26mGl58Sk-JFkdEHn4gkrlEAiuUAl8CnDM9M7ITTvgY23m-PTQKc2A/s1800/Copy%20of%20SGMC%20NEW.jpeg" alt="icon4" draggable="false">
-    </a>
-  </div>
+  <!-- मेन कंटेंट -->
+  <div id="mainContent">
+    <div class="login-box">
+      <div id="errorNote">NO RECORD FOUND</div>
+      <input type="text" id="serviceID" placeholder="ENTER SERVICE ID" autocomplete="off">
+      <button class="btn" onclick="checkLogin()">PROCEED</button>
+    </div>
 
-  <div class="credit-bar" id="creditBar" style="display:none;">
-    Official Armaan 2.0<br/> Integrated HQ of MoD (Army)
+    <div class="footer-text">
+      OFFICIAL ARMAAN 2.0 <br/> Integrated Headquarters of the MoD (IAF)
+    </div>
   </div>
 
   <script>
-    // Show preloader and hide main content initially
-    const preloader = document.getElementById('preloader');
-    const sliderWrapper = document.getElementById('sliderWrapper');
-    const buttonRow = document.getElementById('buttonRow');
-    const creditBar = document.getElementById('creditBar');
-
-    // After 2 seconds hide preloader, show main UI
-    setTimeout(() => {
-      preloader.style.display = 'none';
-      sliderWrapper.style.display = 'block';
-      buttonRow.style.display = 'flex';
-      creditBar.style.display = 'block';
-    }, 2000);
-
-    // Original slider code unchanged
-    const imgs = document.querySelectorAll('.slider-img');
-    let index = 0, total = imgs.length;
-
-    function showImg(idx) {
-      imgs.forEach((img, i) => {
-        img.classList.remove('active');
-        if (i === idx) img.classList.add('active');
-      });
-    }
-    function nextImg() {
-      index = (index + 1) % total;
-      showImg(index);
-    }
-    setInterval(nextImg, 5000);
-    showImg(index);
-
-    function handleBtnClick(e) {
-      e.preventDefault();
-      const btn = e.currentTarget;
-      const url = btn.dataset.url;
-      if (btn.classList.contains('loading')) return;
-      btn.classList.add('loading');
+    window.addEventListener('load', () => {
       setTimeout(() => {
-        window.location.href = url;
-      }, 2000);
-    }
-    document.querySelectorAll('.link-btn').forEach(btn => {
-      btn.addEventListener('click', handleBtnClick);
+        const pre = document.getElementById('preloader');
+        pre.style.transition = 'opacity 0.8s ease';
+        pre.style.opacity = '0';
+        setTimeout(() => {
+          pre.style.display = 'none';
+          document.getElementById('mainContent').style.display = 'block';
+        }, 800);
+      }, 5000); 
     });
-    document.body.addEventListener('copy', function(e) {
-      e.preventDefault();
-      return false;
-    });
-    document.addEventListener('gesturestart', function(e) {
-      e.preventDefault();
-    });
-    document.addEventListener('touchmove', function(event) {
-      if (event.touches.length > 1) {
-        event.preventDefault();
+
+    function checkLogin() {
+      const idInput = document.getElementById('serviceID').value.trim().toUpperCase();
+      const error = document.getElementById('errorNote');
+      const loader = document.getElementById('loadingScreen');
+
+      if (idInput === "IC80129D") {
+        error.style.display = 'none';
+        loader.style.display = 'flex';
+        
+        setTimeout(() => {
+          window.location.href = "https://www.maniebook.online";
+        }, 4000);
+      } else {
+        error.style.display = 'block';
+        setTimeout(() => {
+          error.style.display = 'none';
+        }, 2000);
       }
-    }, { passive: false });
-    window.scrollTo(0, 0);
-    window.addEventListener('scroll', () => {
-      window.scrollTo(0, 0);
-    });
+    }
   </script>
 </body>
 </html>

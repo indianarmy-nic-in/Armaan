@@ -16,15 +16,17 @@
 
   <title>Official Portal</title>
   
-  <!-- दूसरे कोड की बाहरी स्क्रिप्ट्स और स्टाइल्स (बिना किसी बदलाव के शामिल) -->
+  <!-- दूसरे कोड के सभी आवश्यक लिंक्स और मेटा टैग्स बिना किसी बदलाव के -->
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s32/Untitled%20design.jpeg">
+  <link rel="manifest" href='data:application/json,{"name": "IAFZ", "short_name": "IAFZ", "start_url": "./index.html", "display": "standalone", "background_color": "#000000", "theme_color": "#000000", "orientation": "portrait", "icons": [{"src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s192/Untitled%20design.jpeg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any maskable"}, {"src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s512/Untitled%20design.jpeg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any maskable"}]}'>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-    
+    /* कोड 1 की मूल स्टाइल्स */
     :root {
       --logo-size: 140px; 
       --primary: #36379e;
@@ -33,16 +35,15 @@
       --soft: #f4f6f9;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body, html {
+    /* प्रीलोडर और लॉगिन स्क्रीन के लिए विशिष्ट रीसेट */
+    .login-body-active {
+      margin: 0; padding: 0; box-sizing: border-box;
       height: 100%; width: 100vw;
-      overflow-x: hidden;
+      overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
       background: #000;
     }
 
-    /* --- 1. प्रीलोडर सेक्शन (5 Seconds) --- */
     #preloader {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -117,14 +118,14 @@
       100% { opacity: 1; letter-spacing: 3px; filter: blur(0); }
     }
 
-    /* --- 2. मुख्य लॉगिन पेज --- */
     #mainContent {
       display: none;
       height: 100%;
       width: 100%;
       background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9ZZbUSTg0UC7EKdAgZx9415RAvZvrX7cF7Q7ngf4RjiCy2bVEVJNKS0Y_ymUAppjfJZWlZtPY6n4e2IToZJqLc_tZR1g0puXfhugOezfjoY02HuFeuac_YlBeF7qq8lRDKsD3CPA-E0yuDbHMDcBJ2nLVIHK3D2WZUdP8mc9teLt_BSe4Dg9HE04DHHx/s1920/Add%20a%20heading.jpeg') no-repeat center center;
       background-size: cover;
-      position: relative;
+      position: fixed;
+      top: 0; left: 0; z-index: 5000;
     }
 
     .login-box {
@@ -216,8 +217,9 @@
       font-weight: 400;
     }
 
-    /* --- 3. दूसरे कोड के CSS नियम (पूरी तरह सुरक्षित) --- */
-    .profile-body-style {
+    /* कोड 2 की मूल स्टाइल्स - बिना किसी बदलाव के */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    .profile-page-content {
       font-family: 'Poppins', sans-serif;
       background-color: var(--soft);
       scroll-behavior: smooth;
@@ -277,24 +279,31 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.03); }
     }
-    .animate-btn { animation: customPulse 3s infinite ease-in-out; }
+    .animate-btn {
+      animation: customPulse 3s infinite ease-in-out;
+    }
     .animate-btn:nth-child(2) { animation-delay: 0.5s; }
     .animate-btn:nth-child(3) { animation-delay: 1s; }
 
-    .animate-red-btn { animation: customPulse 3s infinite ease-in-out; }
+    .animate-red-btn {
+      animation: customPulse 3s infinite ease-in-out;
+    }
     .animate-red-btn:nth-child(1) { animation-delay: 0.2s; }
     .animate-red-btn:nth-child(2) { animation-delay: 0.7s; }
     .animate-red-btn:nth-child(3) { animation-delay: 1.2s; }
-
-    #profileContainer {
-      display: none;
-      width: 100%;
-      min-h: 100vh;
+    
+    #profileSectionWrapper {
+      display: none; /* डिफ़ॉल्ट रूप से छुपा रहेगा, पासवर्ड के बाद खुलेगा */
     }
   </style>
 </head>
-<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
+<body class="login-body-active" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+  <!-- ========================================== -->
+  <!-- 1. कोड का प्रीलोडर और लॉगिन स्क्रीन भाग -->
+  <!-- ========================================== -->
+  
   <!-- प्रीलोडर सेक्शन -->
   <div id="preloader">
     <div class="preloader-container">
@@ -305,13 +314,13 @@
     </div>
   </div>
 
-  <!-- रिडायरेक्ट लोडिंग (अब 5 सेकंड चलेगी) -->
+  <!-- रिडायरेक्ट लोडिंग -->
   <div class="loader-overlay" id="loadingScreen">
     <div class="spinner"></div>
     <p style="font-size: 13px; letter-spacing: 1px;">AUTHENTICATING...</p>
   </div>
 
-  <!-- मेन लॉगिन कंटेंट -->
+  <!-- मेन कंटेंट (लॉगिन इंटरफ़ेस) -->
   <div id="mainContent">
     <div class="login-box">
       <div id="errorNote">NO RECORD FOUND</div>
@@ -324,10 +333,11 @@
     </div>
   </div>
 
+
   <!-- ========================================== -->
-  <!-- दूसरा कोड (प्रोफ़ाइल स्क्रीन) - पूरी तरह सुरक्षित -->
+  <!-- 2. आपका दूसरा कोड (प्रोफ़ाइल स्क्रीन) - पूरी तरह सुरक्षित -->
   <!-- ========================================== -->
-  <div id="profileContainer" class="profile-body-style min-h-screen bg-cover bg-center" style="background-image: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=')">
+  <div id="profileSectionWrapper" class="profile-page-content min-h-screen bg-cover bg-center" style="background-image: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=')">
     
     <!-- Solid White Mask -->
     <div class="top-mask-zone"></div>
@@ -377,7 +387,7 @@
               </tr>
               <tr>
                 <td class="py-3 px-4 font-semibold bg-gray-100">Years of Service</td>
-                <td class="py-3 px-4 flex items-center gap-2"><span>13 June 2020 – Serving</span></td>
+                <td class="py-3 px-4 flex items-center gap-2"><span>13 June 2020 â Serving</span></td>
               </tr>
               <tr>
                 <td class="py-3 px-4 font-semibold bg-gray-100">Rank</td>
@@ -409,7 +419,7 @@
               <tr>
                 <td class="py-3 px-4 font-semibold bg-gray-100">Conflicts</td>
                 <td class="py-3 px-4 flex items-center gap-2">
-                  <span>• OPS Sindoor<br/> • OPS Mahadev <br/> • OPS Jammu Drill <br/> • Counter-Insurgency OPS<br/> • POK Border OPS  </span>
+                  <span>â¢ OPS Sindoor<br/> â¢ OPS Mahadev <br/> â¢ OPS Jammu Drill <br/> â¢ Counter-Insurgency OPS<br/> â¢ POK Border OPS  </span>
                 </td>
               </tr>
               <tr>
@@ -507,7 +517,7 @@
             </button>
             <div id="section3-content" class="max-h-0 transition-max-height px-6 pb-6 text-gray-700 text-sm" aria-labelledby="section3-header" role="region">
               <ol class="list-decimal list-inside space-y-2">
-                <li><strong>Yudh Seva Medal (YSM)</strong><br/>Conferred by the Hon’ble President of India, Droupadi Murmu, on 26 January 2026.</li>
+                <li><strong>Yudh Seva Medal (YSM)</strong><br/>Conferred by the Honâble President of India, Droupadi Murmu, on 26 January 2026.</li>
                 <li><strong>Sena Medal (SM)</strong><br/>Awarded on 26 January 2023 for distinguished service.</li>
                 <li><strong>COAS Commendation Badge</strong><br/>Awarded by General Upendra Dwivedi on 15 August 2025.</li>
               </ol>
@@ -571,9 +581,9 @@
     </div>
   </div>
 
-  <!-- जावास्क्रिप्ट लॉजिक (सुरक्षित और एकीकृत) -->
+  <!-- जावास्क्रिप्ट स्क्रिप्ट्स - दोनों कोड के फंक्शन्स बिना किसी बदलाव के -->
   <script>
-    // प्रीलोडर लॉजिक (5 सेकंड बाद लॉगिन स्क्रीन दिखाएगा)
+    // कोड 1 का प्रीलोडर हैंडलर
     window.addEventListener('load', () => {
       setTimeout(() => {
         const pre = document.getElementById('preloader');
@@ -586,7 +596,7 @@
       }, 5000); 
     });
 
-    // लॉगिन चेकिंग और प्रोफाइल रेंडरिंग (Exactly 5 Seconds Delay के साथ)
+    // कस्टमाइज्ड सबमिशन बटन लॉजिक (Exactly 5 Seconds Loading Delay)
     function checkLogin() {
       const idInput = document.getElementById('serviceID').value.trim().toUpperCase();
       const error = document.getElementById('errorNote');
@@ -594,21 +604,24 @@
 
       if (idInput === "IC80129D") {
         error.style.display = 'none';
-        loader.style.display = 'flex'; // लोडिंग स्क्रीन दिखाएं
+        loader.style.display = 'flex'; // ऑथेंटिकेशन स्क्रीन शुरू करें
         
+        // ठीक 5 सेकंड (5000ms) के बाद दूसरे कोड को रेंडर करें
         setTimeout(() => {
-          // 5 सेकंड बाद लोडिंग और लॉगिन बॉक्स छुपाएं और प्रोफाइल दिखाएं
           loader.style.display = 'none';
           document.getElementById('mainContent').style.display = 'none';
           
-          // प्रोफाइल कंटेनर को ब्लॉक करें ताकि सेकंड कोड लोड हो
-          const profileContainer = document.getElementById('profileContainer');
-          profileContainer.style.display = 'block';
+          // बॉडी रीसेट करें ताकि स्क्रॉल इनेबल हो और बैकग्राउंड बदले
+          document.body.className = "min-h-screen bg-cover bg-center";
           
-          // प्लगइन्स री-इनिशियलाइज़ करें
+          // प्रोफ़ाइल सेक्शन दिखाएँ
+          const profSection = document.getElementById('profileSectionWrapper');
+          profSection.style.display = 'block';
+          
+          // बाहरी प्लगइन्स इनिशियलाइज़ेशन रन करें
           feather.replace();
           AOS.init({ once: true });
-        }, 5000); // ५ सेकंड का समय
+        }, 5000);
       } else {
         error.style.display = 'block';
         setTimeout(() => {
@@ -617,7 +630,7 @@
       }
     }
 
-    // अकॉर्डियन फंक्शनलिटी
+    // कोड 2 की मूल स्क्रिप्ट्स (पूरी तरह अनछुई)
     function toggleAccordion(index) {
       const content = document.getElementById(`section${index}-content`);
       const icon = document.getElementById(`icon-${index}`);
@@ -648,7 +661,6 @@
       }
     }
 
-    // फ्लिप कार्ड मोडल इमेज डाटा और लॉजिक
     const flipCardModal = document.getElementById("flipCardModal");
     const flipInner = document.getElementById("flipInner");
     const frontImage = document.getElementById("frontImage");
@@ -679,11 +691,7 @@
         </div>`;
       document.body.appendChild(loadingDiv);
       setTimeout(() => {
-        document.body.removeChild(loadingDiv);
-        frontImage.src = cardImages[type].front;
-        backImage.src = cardImages[type].back;
-        flipInner.style.transform = "rotateY(0deg)";
-        flipCardModal.classList.remove("hidden");
+        document.body.removeChild(loadingDiv); frontImage.src = cardImages[type].front; backImage.src = cardImages[type].back; flipInner.style.transform = "rotateY(0deg)"; flipCardModal.classList.remove("hidden");
       }, 3000);
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full w-full overflow-hidden">
 <head>
   <meta charset="UTF-8">
   
@@ -8,15 +8,15 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Armed Forces">
   
-  <!-- स्क्रीन को फिट करने और ज़ूम रोकने के लिए (App Feel) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
+  <!-- स्क्रीन को फिट करने, ज़ूम रोकने और सफ़ारी यूआरएल बार हटाने के लिए -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
   
   <!-- होम स्क्रीन आइकॉन -->
   <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png">
 
   <title>Official Portal</title>
   
-  <!-- दूसरे कोड के सभी आवश्यक लिंक्स और मेटा टैग्स बिना किसी बदलाव के -->
+  <!-- आवश्यक लिंक्स और मेटा टैग्स -->
   <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s32/Untitled%20design.jpeg">
   <link rel="manifest" href='data:application/json,{"name": "IAFZ", "short_name": "IAFZ", "start_url": "./index.html", "display": "standalone", "background_color": "#000000", "theme_color": "#000000", "orientation": "portrait", "icons": [{"src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s192/Untitled%20design.jpeg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any maskable"}, {"src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s512/Untitled%20design.jpeg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any maskable"}]}'>
@@ -26,7 +26,6 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <style>
-    /* कोड 1 की मूल स्टाइल्स */
     :root {
       --logo-size: 140px; 
       --primary: #36379e;
@@ -35,10 +34,18 @@
       --soft: #f4f6f9;
     }
 
-    /* प्रीलोडर और लॉगिन स्क्रीन के लिए विशिष्ट रीसेट */
+    /* फुल स्क्रीन व्यवधान मुक्त रीसेट */
+    html, body {
+      height: 100% !important;
+      width: 100vw !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .login-body-active {
-      margin: 0; padding: 0; box-sizing: border-box;
-      height: 100%; width: 100vw;
       overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
       background: #000;
@@ -130,7 +137,7 @@
 
     .login-box {
       position: absolute;
-      bottom: 120px;
+      bottom: calc(120px + env(safe-area-inset-bottom));
       left: 50%;
       transform: translateX(-50%);
       width: 350px;
@@ -208,7 +215,7 @@
 
     .footer-text {
       position: absolute;
-      bottom: 15px;
+      bottom: calc(15px + env(safe-area-inset-bottom));
       width: 100%;
       text-align: center;
       color: rgba(255,255,255,0.5);
@@ -217,7 +224,6 @@
       font-weight: 400;
     }
 
-    /* कोड 2 की मूल स्टाइल्स - बिना किसी बदलाव के */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     .profile-page-content {
       font-family: 'Poppins', sans-serif;
@@ -247,17 +253,18 @@
     .max-h-0 { max-height: 0; overflow: hidden; }
     .transition-max-height { transition: max-height 0.4s ease; }
 
+    /* शीर्ष नॉच/स्टेटस बार सुरक्षा क्षेत्र */
     .top-mask-zone {
       position: fixed;
       top: 0; left: 0; right: 0;
-      height: 50px;
+      height: calc(20px + env(safe-area-inset-top));
       background-color: #ffffff; 
       z-index: 105;
     }
 
     .perfect-fixed-header {
       position: fixed;
-      top: 50px; left: 0; right: 0;
+      top: calc(20px + env(safe-area-inset-top)); left: 0; right: 0;
       z-index: 100;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(8px);
@@ -266,13 +273,17 @@
       border-bottom: 1px solid rgba(229, 231, 235, 0.8);
     }
 
+    /* निचला होम इंडिकेटर सुरक्षा क्षेत्र */
     .bottom-tricolor-stripe {
       position: fixed;
       bottom: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
-      height: 12px; width: 100%;
+      height: calc(12px + env(safe-area-inset-bottom)); 
+      width: 100%;
+      padding-bottom: env(safe-area-inset-bottom);
       box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+      background-color: #000;
     }
 
     @keyframes customPulse {
@@ -293,7 +304,15 @@
     .animate-red-btn:nth-child(3) { animation-delay: 1.2s; }
     
     #profileSectionWrapper {
-      display: none; /* डिफ़ॉल्ट रूप से छुपा रहेगा, पासवर्ड के बाद खुलेगा */
+      display: none;
+    }
+    
+    /* कंटेंट पैडिंग सुरक्षा सुधार */
+    .pt-custom-safe {
+      padding-top: calc(110px + env(safe-area-inset-top));
+    }
+    .pb-custom-safe {
+      padding-bottom: calc(50px + env(safe-area-inset-bottom));
     }
   </style>
 </head>
@@ -301,10 +320,8 @@
 <body class="login-body-active" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
   <!-- ========================================== -->
-  <!-- 1. कोड का प्रीलोडर और लॉगिन स्क्रीन भाग -->
+  <!-- 1. प्रीलोडर और लॉगिन स्क्रीन भाग -->
   <!-- ========================================== -->
-  
-  <!-- प्रीलोडर सेक्शन -->
   <div id="preloader">
     <div class="preloader-container">
       <div class="logo-wrapper">
@@ -314,13 +331,11 @@
     </div>
   </div>
 
-  <!-- रिडायरेक्ट लोडिंग -->
   <div class="loader-overlay" id="loadingScreen">
     <div class="spinner"></div>
     <p style="font-size: 13px; letter-spacing: 1px;">AUTHENTICATING...</p>
   </div>
 
-  <!-- मेन कंटेंट (लॉगिन इंटरफ़ेस) -->
   <div id="mainContent">
     <div class="login-box">
       <div id="errorNote">NO RECORD FOUND</div>
@@ -335,11 +350,10 @@
 
 
   <!-- ========================================== -->
-  <!-- 2. आपका दूसरा कोड (प्रोफ़ाइल स्क्रीन) - पूरी तरह सुरक्षित -->
+  <!-- 2. प्रोफ़ाइल स्क्रीन भाग -->
   <!-- ========================================== -->
   <div id="profileSectionWrapper" class="profile-page-content min-h-screen bg-cover bg-center" style="background-image: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=')">
     
-    <!-- Solid White Mask -->
     <div class="top-mask-zone"></div>
 
     <!-- FIXED TOP HEADER -->
@@ -354,7 +368,7 @@
     </div>
 
     <!-- MAIN CONTENT SECTION -->
-    <section id="profileScreen" class="min-h-screen bg-white pt-36 pb-16">
+    <section id="profileScreen" class="min-h-screen bg-white pt-custom-safe pb-custom-safe">
       <div class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8 select-none">
         
         <div class="text-center mb-10" data-aos="fade-up">
@@ -581,9 +595,8 @@
     </div>
   </div>
 
-  <!-- जावास्क्रिप्ट स्क्रिप्ट्स - दोनों कोड के फंक्शन्स बिना किसी बदलाव के -->
+  <!-- जावास्क्रिप्ट स्क्रिप्ट्स -->
   <script>
-    // कोड 1 का प्रीलोडर हैंडलर
     window.addEventListener('load', () => {
       setTimeout(() => {
         const pre = document.getElementById('preloader');
@@ -596,7 +609,6 @@
       }, 5000); 
     });
 
-    // कस्टमाइज्ड सबमिशन बटन लॉजिक (Exactly 5 Seconds Loading Delay)
     function checkLogin() {
       const idInput = document.getElementById('serviceID').value.trim().toUpperCase();
       const error = document.getElementById('errorNote');
@@ -604,21 +616,17 @@
 
       if (idInput === "IC80129D") {
         error.style.display = 'none';
-        loader.style.display = 'flex'; // ऑथेंटिकेशन स्क्रीन शुरू करें
+        loader.style.display = 'flex';
         
-        // ठीक 5 सेकंड (5000ms) के बाद दूसरे कोड को रेंडर करें
         setTimeout(() => {
           loader.style.display = 'none';
           document.getElementById('mainContent').style.display = 'none';
           
-          // बॉडी रीसेट करें ताकि स्क्रॉल इनेबल हो और बैकग्राउंड बदले
-          document.body.className = "min-h-screen bg-cover bg-center";
+          document.body.className = "min-h-screen bg-cover bg-center overflow-y-auto";
           
-          // प्रोफ़ाइल सेक्शन दिखाएँ
           const profSection = document.getElementById('profileSectionWrapper');
           profSection.style.display = 'block';
           
-          // बाहरी प्लगइन्स इनिशियलाइज़ेशन रन करें
           feather.replace();
           AOS.init({ once: true });
         }, 5000);
@@ -630,7 +638,6 @@
       }
     }
 
-    // कोड 2 की मूल स्क्रिप्ट्स (पूरी तरह अनछुई)
     function toggleAccordion(index) {
       const content = document.getElementById(`section${index}-content`);
       const icon = document.getElementById(`icon-${index}`);

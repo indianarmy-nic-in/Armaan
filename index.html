@@ -1,20 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  
-  <!-- iPhone Full Screen (Standalone Mode) के लिए विशिष्ट Meta Tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Armed Forces">
-  
-  <!-- स्क्रीन को फिट करने और ज़ूम रोकने के लिए (App Feel) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
-  
-  <!-- होम स्क्रीन आइकॉन -->
-  <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png">
 
-  <title>Official Portal</title>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>IAFZ</title>
+
+<!-- iPhone Full Screen App -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<!-- Status Bar Style -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- App Name -->
+<meta name="apple-mobile-web-app-title" content="IAFZ">
+
+<!-- Android Theme -->
+<meta name="theme-color" content="#000000">
+
+<!-- App Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s768/Untitled%20design.jpeg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s768/Untitled%20design.jpeg">
+
+<!-- Manifest -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Manifest Inline -->
+<script>
+const manifestData = {
+    "name": "IAFZ",
+    "short_name": "IAFZ",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1PY0qD4EG2HtMMaI44II9S-kopaVutf4XTGRX4zNq6Aichc/s768/Untitled%20design.jpeg",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ]
+};
+
+const manifestBlob = new Blob(
+    [JSON.stringify(manifestData)],
+    {type: 'application/json'}
+);
+
+const manifestURL = URL.createObjectURL(manifestBlob);
+
+document.querySelector('link[rel="manifest"]')
+.setAttribute('href', manifestURL);
+</script>
+
+<style>
+
+body, html{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    font-family:sans-serif;
+    overscroll-behavior-y: none; /* यह ऊपर की तरफ स्क्रॉलिंग रोकता है */
+}
+
+/* Demo Fullscreen App */
+.app-container{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
 
   
   <!-- आवश्यक लिंक्स और मेटा टैग्स -->

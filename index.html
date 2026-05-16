@@ -480,6 +480,158 @@ padding:10px;
 font-size:16px;
 }
 }
+
+/* सुरक्षित बटन कंटेनर (यह आपकी मुख्य वेबसाइट के लेआउट को डिस्टर्ब नहीं करेगा) */
+.custom-btn-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* तीनों बटनों को मोबाइल में सख्त रूप से एक लाइन में रखने के लिए */
+.custom-btn-container .my-button-row {
+    display: flex !important;
+    gap: 10px !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* छोटे बटन की सुरक्षित स्टाइल */
+.custom-btn-container .my-popup-btn {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 10px 5px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
+    box-sizing: border-box !important;
+}
+
+.custom-btn-container .my-popup-btn:hover {
+    transform: translateY(-2px) !important;
+}
+
+.custom-btn-container .my-popup-btn i {
+    font-size: 13px !important;
+}
+
+/* -------------------------------------------- */
+/* यहाँ कोडिंग से बटनों के रंग बदलें (Change Colors Here) */
+/* -------------------------------------------- */
+#popup-btn1 { background: linear-gradient(135deg, #ff416c, #ff4b2b) !important; }
+#popup-btn2 { background: linear-gradient(135deg, #1fa2ff, #12d8fa) !important; }
+#popup-btn3 { background: linear-gradient(135deg, #00b09b, #96c93d) !important; }
+/* -------------------------------------------- */
+
+/* फुल स्क्रीन पॉप-अप ओवरले */
+.my-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(5px) !important;
+    display: none;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 999999 !important;
+    box-sizing: border-box !important;
+}
+
+/* पॉप-अप का मुख्य कंटेंट बॉक्स (अब यह पहचान पत्र के आकार में चौड़ा होगा) */
+.my-modal-content {
+    position: relative !important;
+    background: transparent !important;
+    padding: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 95% !important;
+    max-width: 400px !important; /* बॉक्स को थोड़ा चौड़ा किया ताकि ID कार्ड फिट आ सके */
+    box-sizing: border-box !important;
+}
+
+/* बंद करने का बटन (X) */
+.my-close-btn {
+    position: absolute !important;
+    top: -45px !important;
+    right: 10px !important;
+    color: white !important;
+    font-size: 32px !important;
+    cursor: pointer !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* 3D Flip Card - पहचान पत्र का वास्तविक साइज */
+.my-flip-card {
+    background-color: transparent !important;
+    width: 100% !important;
+    max-width: 336px !important; 
+    aspect-ratio: 85.6 / 53.98 !important; /* पहचान पत्र का मानक अनुपात */
+    perspective: 1000px !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+}
+
+.my-flip-card-inner {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    text-align: center !important;
+    transition: transform 0.5s !important;
+    transform-style: preserve-3d !important;
+}
+
+.my-flip-card.flipped .my-flip-card-inner {
+    transform: rotateY(180deg) !important;
+}
+
+.my-flip-card-front, .my-flip-card-back {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    border-radius: 8px !important; /* पहचान पत्र के कोनों जैसे हल्के घुमावदार कोने */
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+.my-flip-card-front img, .my-flip-card-back img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important; /* 'fill' या 'cover' ताकि इमेज कार्ड के ढांचे में पूरी तरह फिट बैठे */
+}
+
+.my-flip-card-back {
+    transform: rotateY(180deg) !important;
+}
+
+.my-hint-text {
+    color: #ccc !important;
+    margin-top: 15px !important;
+    font-size: 13px !important;
+    font-family: sans-serif !important;
+    text-align: center !important;
+}
+
+
+
 </style>
 </head>
 
@@ -630,44 +782,102 @@ Staff Officer Grade II Operations (SO2 OPS) HQ I Corps Strike 1 Mathura U.P
 
 </div>
 
-<!-- BUTTONS -->
-<div class="btn-row">
+<!-- Font Awesome Icons के लिए CDN (अगर आपकी वेबसाइट में पहले से नहीं है, तो ही इसे रखें) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- आपकी अलग CSS फाइल का लिंक -->
+<link rel="stylesheet" href="style.css">
 
-<button class="action-btn red">
-<i data-feather="credit-card"></i>
-DEFENCE ID
-</button>
+<!-- मुख्य बटन कंटेनर -->
+<div class="custom-btn-container">
+    <div class="my-button-row">
+        <!-- बटन 1 -->
+        <button class="my-popup-btn" id="popup-btn1" onclick="openFlipModal(1)">
+            <i class="fa-solid fa-id-card"></i> 1
+        </button>
 
-<button class="action-btn blue">
-<i data-feather="credit-card"></i>
-CSD CARD
-</button>
+        <!-- बटन 2 -->
+        <button class="my-popup-btn" id="popup-btn2" onclick="openFlipModal(2)">
+            <i class="fa-solid fa-id-card"></i> 2
+        </button>
 
-<button class="action-btn sky">
-<i data-feather="credit-card"></i>
-MEDICAL CARD
-</button>
-
+        <!-- बटन 3 -->
+        <button class="my-popup-btn" id="popup-btn3" onclick="openFlipModal(3)">
+            <i class="fa-solid fa-id-card"></i> 3
+        </button>
+    </div>
 </div>
 
-<div class="btn-row">
-
-<button class="action-btn red">
-<i data-feather="file-text"></i>
-Permission Letters
-</button>
-
-<button class="action-btn blue">
-<i data-feather="file-text"></i>
-Movement Orders
-</button>
-
-<button class="action-btn sky">
-<i data-feather="file-text"></i>
-Service Record
-</button>
-
+<!-- फुल स्क्रीन पॉप-अप ओवरले -->
+<div class="my-modal-overlay" id="myModalOverlay" onclick="closeFlipModal(event)">
+    <div class="my-modal-content">
+        <!-- बंद करने का बटन -->
+        <button class="my-close-btn" onclick="toggleFlipModal(false)">&times;</button>
+        
+        <!-- फ्लिप होने वाला कार्ड -->
+        <div class="my-flip-card" id="myFlipCard" onclick="handleCardFlip(event)">
+            <div class="my-flip-card-inner">
+                <!-- अगला हिस्सा (Front) -->
+                <div class="my-flip-card-front">
+                    <img id="myFrontImg" src="" alt="Front Image">
+                </div>
+                <!-- पिछला हिस्सा (Back) -->
+                <div class="my-flip-card-back">
+                    <img id="myBackImg" src="" alt="Back Image">
+                </div>
+            </div>
+        </div>
+        <p class="my-hint-text"><i class="fa-solid fa-rotate"></i> कार्ड पर क्लिक करके आगे-पीछे पलटें</p>
+    </div>
 </div>
+
+<!-- आपकी अलग जावास्क्रिप्ट फाइल का लिंक -->
+<script src="script.js"></script>
+
+
+<!-- फुल स्क्रीन पॉप-अप ओवरले -->
+<div class="my-modal-overlay" id="myModalOverlay" onclick="closeFlipModal(event)">
+    
+    <!-- 4 सेकंड का लोडिंग स्पिनर (नया जोड़ा गया है) -->
+    <div class="my-loading-box" id="myLoadingBox">
+        <div class="my-spinner"></div>
+        <p>कृपया प्रतीक्षा करें...</p>
+    </div>
+
+    <!-- मुख्य कार्ड कंटेंट (यह लोडिंग के बाद दिखेगा) -->
+    <div class="my-modal-content" id="myModalContent" style="display: none;">
+        <!-- बंद करने का बटन -->
+        <button class="my-close-btn" onclick="toggleFlipModal(false)">&times;</button>
+        
+        <!-- फ्लिप होने वाला कार्ड -->
+        <div class="my-flip-card" id="myFlipCard" onclick="handleCardFlip(event)">
+            <div class="my-flip-card-inner">
+                <!-- अगला हिस्सा (Front) -->
+                <div class="my-flip-card-front">
+                    <img id="myFrontImg" src="" alt="Front Image">
+                </div>
+                <!-- पिछला हिस्सा (Back) -->
+                <div class="my-flip-card-back">
+                    <img id="myBackImg" src="" alt="Back Image">
+                </div>
+            </div>
+        </div>
+        <p class="my-hint-text"><i class="fa-solid fa-rotate"></i> कार्ड पर क्लिक करके आगे-पीछे पलटें</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ACCORDIONS -->
 
@@ -866,6 +1076,73 @@ box.style.display="block";
 }
 
 feather.replace();
+
+// तीनों बटनों के लिए अलग-अलग इमेजेस का डेटा
+const customImageData = {
+    1: {
+        front: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80",
+        back: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80"
+    },
+    2: {
+        front: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
+        back: "https://images.unsplash.com/photo-1621574539437-4b7cb63120b8?w=400&auto=format&fit=crop&q=80"
+    },
+    3: {
+        front: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
+        back: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80"
+    }
+};
+
+// पॉप-अप खोलने का फंक्शन (4 सेकंड लोडिंग के साथ)
+function openFlipModal(btnNumber) {
+    const modal = document.getElementById('myModalOverlay');
+    const loadingBox = document.getElementById('myLoadingBox');
+    const modalContent = document.getElementById('myModalContent');
+    const frontImg = document.getElementById('myFrontImg');
+    const backImg = document.getElementById('myBackImg');
+    const card = document.getElementById('myFlipCard');
+
+    if (card) card.classList.remove('flipped');
+
+    // इमेज सोर्स सेट करें
+    if (frontImg && backImg && customImageData[btnNumber]) {
+        frontImg.src = customImageData[btnNumber].front;
+        backImg.src = customImageData[btnNumber].back;
+    }
+
+    // शुरुआत में सिर्फ लोडिंग बॉक्स दिखेगा, इमेज कंटेंट छुपा रहेगा
+    if (loadingBox) loadingBox.style.setProperty('display', 'flex', 'important');
+    if (modalContent) modalContent.style.setProperty('display', 'none', 'important');
+    if (modal) modal.style.display = 'flex';
+
+    // ठीक 4 सेकंड (4000 मिलीसेकंड) के बाद लोडिंग हटेगी और इमेज आएगी
+    setTimeout(function() {
+        if (loadingBox) loadingBox.style.setProperty('display', 'none', 'important');
+        if (modalContent) modalContent.style.setProperty('display', 'flex', 'important');
+    }, 4000); 
+}
+
+// पॉप-अप बंद करने का फंक्शन
+function toggleFlipModal(show) {
+    const modal = document.getElementById('myModalOverlay');
+    if (modal) modal.style.display = show ? 'flex' : 'none';
+}
+
+// कार्ड फ्लिप करने का फंक्शन
+function handleCardFlip(event) {
+    event.stopPropagation(); 
+    const card = document.getElementById('myFlipCard');
+    if (card) card.classList.toggle('flipped');
+}
+
+// बाहर काले हिस्से पर क्लिक करने पर बंद करने का फंक्शन
+function closeFlipModal(event) {
+    if (event.target.id === 'myModalOverlay') {
+        toggleFlipModal(false);
+    }
+}
+
+
 
 </script>
 

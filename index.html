@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   
-  <!-- iPhone Full Screen (Standalone Mode) के लिए विशिष्ट Meta Tags -->
+  <!-- Apple iOS Full Screen (Standalone App Mode) - URL बार हटाने के लिए सबसे महत्वपूर्ण -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Armed Forces">
+  <meta name="mobile-web-app-capable" content="yes">
   
-  <!-- स्क्रीन को फिट करने, ज़ूम रोकने और सफ़ारी यूआरएल बार हटाने के लिए -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <!-- स्क्रीन को फिट करने, ज़ूम रोकने और सफ़ारी यूआरएल बार को फोर्स-हाइड करने के लिए -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover, minimal-ui">
   
   <!-- होम स्क्रीन आइकॉन -->
   <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png">
@@ -34,19 +35,18 @@
       --soft: #f4f6f9;
     }
 
-    /* फुल स्क्रीन व्यवधान मुक्त रीसेट */
+    /* फुल स्क्रीन व्यवधान मुक्त रीसेट - स्क्रॉलिंग बाउंस इफेक्ट ब्लॉक करने के लिए */
     html, body {
       height: 100% !important;
       width: 100vw !important;
       margin: 0 !important;
       padding: 0 !important;
       box-sizing: border-box;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden !important; /* सफारी ऑटो-स्क्रॉल बार को रोकता है */
+      position: fixed; /* स्क्रीन को अपनी जगह लॉक करता है */
     }
 
     .login-body-active {
-      overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
       background: #000;
     }
@@ -225,16 +225,17 @@
     }
 
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    /* प्रोफाइल के अंदर स्क्रॉल मैनेज करने के लिए */
     .profile-page-content {
       font-family: 'Poppins', sans-serif;
       background-color: var(--soft);
-      scroll-behavior: smooth;
-      user-select: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -webkit-touch-callout: none;
+      height: 100% !important;
+      width: 100% !important;
+      overflow-y: auto !important; /* सफारी ब्राउज़र के खिंचाव को रोककर खुद का स्क्रॉल देगा */
+      -webkit-overflow-scrolling: touch;
     }
+    
     #flipCard { perspective: 1200px; }
     #flipInner {
       transform-style: preserve-3d;
@@ -312,7 +313,7 @@
       padding-top: calc(110px + env(safe-area-inset-top));
     }
     .pb-custom-safe {
-      padding-bottom: calc(50px + env(safe-area-inset-bottom));
+      padding-bottom: calc(60px + env(safe-area-inset-bottom));
     }
   </style>
 </head>
@@ -350,9 +351,9 @@
 
 
   <!-- ========================================== -->
-  <!-- 2. प्रोफ़ाइल स्क्रीन भाग -->
+  <!-- 2. प्रोफ़ाइल स्क्रीन भाग (डैशबोर्ड) -->
   <!-- ========================================== -->
-  <div id="profileSectionWrapper" class="profile-page-content min-h-screen bg-cover bg-center" style="background-image: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=')">
+  <div id="profileSectionWrapper" class="profile-page-content bg-cover bg-center" style="background-image: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=')">
     
     <div class="top-mask-zone"></div>
 
@@ -368,7 +369,7 @@
     </div>
 
     <!-- MAIN CONTENT SECTION -->
-    <section id="profileScreen" class="min-h-screen bg-white pt-custom-safe pb-custom-safe">
+    <section id="profileScreen" class="bg-white pt-custom-safe pb-custom-safe">
       <div class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8 select-none">
         
         <div class="text-center mb-10" data-aos="fade-up">
@@ -595,8 +596,16 @@
     </div>
   </div>
 
-  <!-- जावास्क्रिप्ट स्क्रिप्ट्स -->
+  <!-- जावास्क्रिप्ट स्क्रिप्ट्स - सफारी स्क्रॉल बाउंस लॉक के साथ -->
   <script>
+    // सफारी में टच स्क्रॉल पर ब्राउज़र टूलबार को ट्रिगर होने से रोकने के लिए ग्लोबल लॉक
+    document.addEventListener('touchmove', function(e) {
+      const target = e.target.closest('.profile-page-content');
+      if (!target) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
     window.addEventListener('load', () => {
       setTimeout(() => {
         const pre = document.getElementById('preloader');
@@ -622,7 +631,8 @@
           loader.style.display = 'none';
           document.getElementById('mainContent').style.display = 'none';
           
-          document.body.className = "min-h-screen bg-cover bg-center overflow-y-auto";
+          // सफारी रेंडरिंग को फुल-स्क्रीन पर लॉक करना
+          document.body.style.overflow = "hidden";
           
           const profSection = document.getElementById('profileSectionWrapper');
           profSection.style.display = 'block';

@@ -1,4 +1,48 @@
 <!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <!-- मोबाइल स्क्रीन पर सही फिट होने के लिए -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <title>My App</title>
+
+    <!-- 1. होम स्क्रीन आइकॉन (यहाँ अपने आइकॉन का सही रास्ता/पाथ डालें) -->
+    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_of_the_Indian_Armed_Forces.svg/1280px-Logo_of_the_Indian_Armed_Forces.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail">
+    <!-- अलग-अलग iPhone साइज़ के लिए (वैकल्पिक लेकिन बेहतर प्रदर्शन के लिए) -->
+    <link rel="apple-touch-icon" sizes="152x152" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_of_the_Indian_Armed_Forces.svg/1280px-Logo_of_the_Indian_Armed_Forces.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_of_the_Indian_Armed_Forces.svg/1280px-Logo_of_the_Indian_Armed_Forces.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail">
+
+    <!-- 2. वेबसाइट को ऐप की तरह फुल स्क्रीन में खोलने के लिए (यूआरएल बार छिप जाएगी) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- 3. ऊपर की स्टेटस बार (बैटरी/नेटवर्क वाली पट्टी) को ट्रांसपेरेंट करने के लिए ताकि ऐप फुल स्क्रीन दिखे -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- 4. होम स्क्रीन पर ऐप का क्या नाम दिखेगा -->
+    <meta name="apple-mobile-web-app-title" content="My App Name">
+
+    <!-- 5. ज़ीरो मार्जिन और फुल स्क्रीन के लिए CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: x-hidden;
+            background-color: #ffffff; /* अपनी पसंद का बैकग्राउंड कलर डालें */
+            /* iPhone के नॉच (Notch) के अंदर कंटेंट को न घुसने देने के लिए पैडिंग (यदि ज़रूरत हो) */
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</head>
+<body>
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -824,6 +868,9 @@ box.style.display="block";
 feather.replace();
 
 </script>
+
+</body>
+</html>
 
 </body>
 </html>

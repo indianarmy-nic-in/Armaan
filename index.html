@@ -8,10 +8,10 @@
     <title>My App</title>
 
     <!-- 1. होम स्क्रीन आइकॉन (यहाँ अपने आइकॉन का सही रास्ता/पाथ डालें) -->
-    <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg83bLmd1kyx2BRDe4XfFW2WbhiwbJrLwgyMYyAVxC7bPccITCUVPrFxbP3m5knr0vx6oV9PumtsbJX-12DB-TBs2eM98Nvu0ihoXFzNeGkNyEffTlo9NuuTq-QzF290_L652gRJBxR3w_pVvWE20IZoGRJWmosHVQAIgS0oT2-I6wenmfp7n0MylB3Jo6Y/s512/Untitled%20design.jpeg">
+    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_of_the_Indian_Armed_Forces.svg/1280px-Logo_of_the_Indian_Armed_Forces.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail">
     <!-- अलग-अलग iPhone साइज़ के लिए (वैकल्पिक लेकिन बेहतर प्रदर्शन के लिए) -->
-    <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg83bLmd1kyx2BRDe4XfFW2WbhiwbJrLwgyMYyAVxC7bPccITCUVPrFxbP3m5knr0vx6oV9PumtsbJX-12DB-TBs2eM98Nvu0ihoXFzNeGkNyEffTlo9NuuTq-QzF290_L652gRJBxR3w_pVvWE20IZoGRJWmosHVQAIgS0oT2-I6wenmfp7n0MylB3Jo6Y/s512/Untitled%20design.jpeg">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg83bLmd1kyx2BRDe4XfFW2WbhiwbJrLwgyMYyAVxC7bPccITCUVPrFxbP3m5knr0vx6oV9PumtsbJX-12DB-TBs2eM98Nvu0ihoXFzNeGkNyEffTlo9NuuTq-QzF290_L652gRJBxR3w_pVvWE20IZoGRJWmosHVQAIgS0oT2-I6wenmfp7n0MylB3Jo6Y/s512/Untitled%20design.jpeg">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_of_the_Indian_Armed_Forces.svg/1280px-Logo_of_the_Indian_Armed_Forces.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Logo_of_the_Indian_Armed_Forces.svg/1280px-Logo_of_the_Indian_Armed_Forces.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail">
 
     <!-- 2. वेबसाइट को ऐप की तरह फुल स्क्रीन में खोलने के लिए (यूआरएल बार छिप जाएगी) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -631,6 +631,127 @@ font-size:16px;
 }
 
 
+/* -------------------------------------------- */
+/* सुरक्षित और सीमित सीएसएस (वेबसाइट को डिस्टर्ब नहीं करेगा) */
+/* -------------------------------------------- */
+
+.pdf-portal-container {
+    width: 100% !important;
+    max-width: 360px !important; /* मोबाइल के लिए परफेक्ट चौड़ाई */
+    margin: 10px auto !important;
+    padding: 5px !important;
+    box-sizing: border-box !important;
+}
+
+/* तीनों बटनों को मोबाइल में सख्त रूप से एक ही लाइन में रखने के लिए */
+.pdf-portal-container .pdf-btn-row {
+    display: flex !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* छोटे और आकर्षक बटन की स्टाइल */
+.pdf-portal-container .pdf-small-btn {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    padding: 8px 4px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: transform 0.2s !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15) !important;
+    box-sizing: border-box !important;
+}
+
+.pdf-portal-container .pdf-small-btn:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* -------------------------------------------- */
+/* यहाँ कोडिंग से बटनों के रंग बदलें (Change Colors Here) */
+/* -------------------------------------------- */
+#pdf-btn1 { background: linear-gradient(135deg, #ff3333, #bd0000) !important; }
+#pdf-btn2 { background: linear-gradient(135deg, #0088cc, #005580) !important; }
+#pdf-btn3 { background: linear-gradient(135deg, #2ecc71, #27ae60) !important; }
+/* -------------------------------------------- */
+
+/* फुल स्क्रीन पॉप-अप ओवरले (पीछे का सब कुछ छुपाने के लिए) */
+.pdf-a4-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(26, 26, 26, 0.9) !important; /* गहरा धुंधला बैकग्राउंड */
+    display: none; /* डिफ़ॉल्ट रूप से बंद */
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 999999 !important;
+    padding: 50px 15px 20px 15px !important; /* ऊपर बटन के लिए जगह छोड़ी है */
+    box-sizing: border-box !important;
+}
+
+/* A4 साइज का मुख्य PDF फ्रेम कंटेनर */
+.pdf-a4-content {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 550px !important;
+    /* A4 पेपर का सटीक अनुपात (लंबाई में स्क्रॉलिंग सपोर्ट के साथ) */
+    aspect-ratio: 1 / 1.414 !important; 
+    background: white !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* गूगल ड्राइव आईफ्रेम (स्क्रॉलिंग पीडीएफ के लिए) */
+.pdf-a4-content iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+    display: block !important;
+}
+
+/* लाल रंग का क्रॉस क्लोज बटन (X) */
+.pdf-a4-close-btn {
+    position: absolute !important;
+    top: -45px !important;
+    right: 0px !important;
+    color: #ff3333 !important; /* गहरा लाल रंग */
+    background: #ffffff !important; /* सफेद गोलाकार बैकग्राउंड ताकि साफ़ दिखे */
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
+    transition: background 0.2s, color 0.2s !important;
+    z-index: 1000000 !important;
+}
+
+.pdf-a4-close-btn:hover {
+    background: #ff3333 !important;
+    color: #ffffff !important;
+}
+
+
+
 
 </style>
 </head>
@@ -864,6 +985,45 @@ Staff Officer Grade II Operations (SO2 OPS) HQ I Corps Strike 1 Mathura U.P
       
     </div>
 </div>
+
+
+
+<!-- Font Awesome Icons (अगर आपकी वेबसाइट में पहले से नहीं है, तो इसे <head> में या यहाँ सबसे ऊपर डालें) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- मुख्य बटन ब्लॉक (यह वेबसाइट के लेआउट को डिस्टर्ब नहीं करेगा) -->
+<div class="pdf-portal-container">
+    <div class="pdf-btn-row">
+        <!-- बटन 1 -->
+        <button class="pdf-small-btn" id="pdf-btn1" onclick="openA4Modal(1)">
+            <i class="fa-solid fa-file-pdf"></i> बटन 1
+        </button>
+
+        <!-- बटन 2 -->
+        <button class="pdf-small-btn" id="pdf-btn2" onclick="openA4Modal(2)">
+            <i class="fa-solid fa-file-pdf"></i> बटन 2
+        </button>
+
+        <!-- बटन 3 -->
+        <button class="pdf-small-btn" id="pdf-btn3" onclick="openA4Modal(3)">
+            <i class="fa-solid fa-file-pdf"></i> बटन 3
+        </button>
+    </div>
+</div>
+
+<!-- फुल स्क्रीन पॉप-अप ओवरले (यह डिफ़ॉल्ट रूप से छुपा रहेगा, स्क्रीन पर कोई जगह नहीं घेरेगा) -->
+<div class="pdf-a4-overlay" id="pdfA4Overlay" onclick="closeA4ModalFromOverlay(event)">
+    <div class="pdf-a4-content" onclick="preventClose(event)">
+        <!-- बंद करने का क्रॉस बटन (X) -->
+        <button class="pdf-a4-close-btn" onclick="closeA4Modal()">&times;</button>
+        
+        <!-- स्क्रॉलिंग गूगल ड्राइव पीडीएफ फ्रेम -->
+        <iframe id="pdfA4Frame" src="" allow="autoplay"></iframe>
+    </div>
+</div>
+
+
+
 
 
 
@@ -1141,6 +1301,56 @@ function closeFlipModal(event) {
         toggleFlipModal(false);
     }
 }
+
+
+// आपके द्वारा दी गई Google Drive PDF का सटीक /preview लिंक सेट कर दिया गया है
+// आप यहाँ अपनी ज़रूरत के हिसाब से अलग-अलग लिंक बदल सकते हैं
+const googleDriveLinks = {
+    1: "https://drive.google.com/file/d/18dSFThqny03SRRheTpva_7jgU1qDmEcQ/preview", 
+    2: "https://drive.google.com/file/d/18dSFThqny03SRRheTpva_7jgU1qDmEcQ/preview", 
+    3: "https://drive.google.com/file/d/18dSFThqny03SRRheTpva_7jgU1qDmEcQ/preview"  
+};
+
+// पॉप-अप खोलने का फंक्शन
+function openA4Modal(btnNumber) {
+    const overlay = document.getElementById('pdfA4Overlay');
+    const pdfFrame = document.getElementById('pdfA4Frame');
+
+    if (pdfFrame && googleDriveLinks[btnNumber]) {
+        // संबंधित बटन का गूगल ड्राइव लिंक आईफ्रेम में सेट करना
+        pdfFrame.src = googleDriveLinks[btnNumber];
+    }
+
+    if (overlay) {
+        overlay.style.setProperty('display', 'flex', 'important');
+    }
+}
+
+// पॉप-अप बंद करने का मुख्य फंक्शन
+function closeA4Modal() {
+    const overlay = document.getElementById('pdfA4Overlay');
+    const pdfFrame = document.getElementById('pdfA4Frame');
+    
+    if (overlay) {
+        overlay.style.setProperty('display', 'none', 'important');
+    }
+    if (pdfFrame) {
+        pdfFrame.src = ""; // बंद होने पर पीडीएफ को रोक देना ताकि बैकग्राउंड में डेटा या ऑडियो लोड न रहे
+    }
+}
+
+// स्क्रीन पर (काले हिस्से पर) कहीं भी क्लिक करने पर बंद करने का लॉजिक
+function closeA4ModalFromOverlay(event) {
+    if (event.target.id === 'pdfA4Overlay') {
+        closeA4Modal();
+    }
+}
+
+// जब विज़िटर PDF के अंदर क्लिक या स्क्रॉल करे तो पॉप-अप बंद न हो, उसके लिए प्रोटेक्शन
+function preventClose(event) {
+    event.stopPropagation();
+}
+
 
 
 

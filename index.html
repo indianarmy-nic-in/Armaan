@@ -696,25 +696,25 @@ font-size:16px;
     justify-content: center !important;
     align-items: center !important;
     z-index: 999999 !important;
-    padding: 50px 15px 20px 15px !important; /* ऊपर बटन के लिए जगह छोड़ी है */
+    padding: 40px 10px 10px 10px !important; /* ऊपर स्पेस मैनेज किया */
     box-sizing: border-box !important;
 }
 
-/* A4 साइज का मुख्य PDF फ्रेम कंटेनर */
+/* A4 साइज का मुख्य PDF फ्रेम कंटेनर - सटीक रूप से सेट किया गया अनुपात */
 .pdf-a4-content {
     position: relative !important;
     width: 100% !important;
-    max-width: 550px !important;
-    /* A4 पेपर का सटीक अनुपात (लंबाई में स्क्रॉलिंग सपोर्ट के साथ) */
-    aspect-ratio: 1 / 1.414 !important; 
+    max-width: 450px !important; /* मोबाइल और स्क्रीन के लिए बेस्ट विड्थ */
+    height: 80vh !important; /* स्क्रीन की ऊंचाई के हिसाब से व्यवस्थित */
+    max-height: 636px !important; /* चौड़ाई और ऊंचाई का A4 (1:1.414) अनुपात बनाए रखने के लिए */
     background: white !important;
     box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important;
-    border-radius: 6px !important;
+    border-radius: 8px !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
 }
 
-/* गूगल ड्राइव आईफ्रेम (स्क्रॉलिंग पीडीएफ के लिए) */
+/* पीडीएफ फ्रेम स्टाइल - पूरी तरह ए4 के बॉक्स में सेट */
 .pdf-a4-content iframe {
     width: 100% !important;
     height: 100% !important;
@@ -750,8 +750,61 @@ font-size:16px;
     color: #ffffff !important;
 }
 
-
-
+/* ड्यूटी चार्ट पॉपअप के लिए अतिरिक्त सीएसएस */
+.duty-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 100005;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+.duty-box {
+    background: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: zoomIn 0.3s ease;
+}
+.duty-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000080;
+    text-align: center;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #f3f4f6;
+    padding-bottom: 8px;
+}
+.duty-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.duty-table th {
+    background: #f3f4f6;
+    color: #333;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 10px 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+.duty-table td {
+    padding: 10px 8px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    color: #333;
+}
+.duty-table tr:nth-child(even) {
+    background: #fafafa;
+}
 
 </style>
 </head>
@@ -785,11 +838,6 @@ NO RECORD FOUND
 
 <button onclick="loginNow()">PROCEED</button>
 
-</div>
-
-<div class="footer">
-OFFICIAL ARMAAN 2.0 <br>
-Integrated Headquarters of the MoD (IAF)
 </div>
 
 </div>
@@ -996,17 +1044,17 @@ Staff Officer Grade II Operations (SO2 OPS) HQ I Corps Strike 1 Mathura U.P
     <div class="pdf-btn-row">
         <!-- बटन 1 -->
         <button class="pdf-small-btn" id="pdf-btn1" onclick="openA4Modal(1)">
-            <i class="fa-solid fa-file-pdf"></i> बटन 1
+            <i class="fa-solid fa-file-pdf"></i> Permission Letters
         </button>
 
         <!-- बटन 2 -->
         <button class="pdf-small-btn" id="pdf-btn2" onclick="openA4Modal(2)">
-            <i class="fa-solid fa-file-pdf"></i> बटन 2
+            <i class="fa-solid fa-file-pdf"></i> Movement Orders
         </button>
 
         <!-- बटन 3 -->
         <button class="pdf-small-btn" id="pdf-btn3" onclick="openA4Modal(3)">
-            <i class="fa-solid fa-file-pdf"></i> बटन 3
+            <i class="fa-solid fa-file-pdf"></i> Medical Insurance
         </button>
     </div>
 </div>
@@ -1017,27 +1065,65 @@ Staff Officer Grade II Operations (SO2 OPS) HQ I Corps Strike 1 Mathura U.P
         <!-- बंद करने का क्रॉस बटन (X) -->
         <button class="pdf-a4-close-btn" onclick="closeA4Modal()">&times;</button>
         
-        <!-- स्क्रॉलिंग गूगल ड्राइव पीडीएफ फ्रेम -->
+        <!-- स्क्रॉलिंग पीडीएफ फ्रेम - ए4 साइज में पूर्णतः सुसज्जित -->
         <iframe id="pdfA4Frame" src="" allow="autoplay"></iframe>
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- ड्यूटी चार्ट पॉप-अप (सफ़ेद बॉक्स टेबल) -->
+<div class="duty-overlay" id="dutyChartOverlay" onclick="hideDutyChart()">
+    <div class="duty-box" onclick="event.stopPropagation(); hideDutyChart();">
+        <div class="duty-title">DELTA COMPANY DUTY CHART</div>
+        <table class="duty-table">
+            <thead>
+                <tr>
+                    <th>Personnel Name</th>
+                    <th>Date</th>
+                    <th>Duty</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Capt. Manish Chaudhary</td>
+                    <td>18 May 2026</td>
+                    <td>Supervising Officer</td>
+                    <td> 2200hrs - 1000hrs</td>
+                </tr>
+                <tr>
+                    <td>Sub. Rajesh Kumar</td>
+                    <td>18 May 2026</td>
+                    <td>Camp In-charge</td>
+                    <td> 2200hrs - 1000hrs </td>
+                </tr>
+                <tr>
+                    <td>Nb Sub. Amit Singh</td>
+                    <td>18 May 2026</td>
+                    <td>Quarter Guard</td>
+                    <td> 2200hrs - 1000hrs </td>
+                </tr>
+                <tr>
+                    <td>Hav. Vijay Yadav</td>
+                    <td>18 May 2026</td>
+                    <td>Patrol Commander</td>
+                    <td> 2200hrs - 1000hrs </td>
+                </tr>
+                <tr>
+                    <td>Nk. Deepak Thapa</td>
+                    <td>18 May 2026</td>
+                    <td>Night Sentry</td>
+                    <td> 2200hrs - 1000hrs </td>
+                </tr>
+                <tr>
+                    <td>L/Nk. Arun Sharma</td>
+                    <td>18 May 2026</td>
+                    <td>Standby Duty</td>
+                    <td> 2200hrs - 1000hrs </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 <!-- ACCORDIONS -->
 
@@ -1207,6 +1293,9 @@ document.getElementById("loginPage").style.display="none";
 document.getElementById("dashboard").style.display="block";
 document.getElementById("tricolorStripe").style.display="block"; /* लॉगिन होने पर दिखाई देगी */
 
+// डैशबोर्ड खुलने पर ड्यूटी चार्ट पॉपअप दिखाएं
+showDutyChart();
+
 feather.replace();
 
 },4000);
@@ -1233,6 +1322,15 @@ box.style.display="none";
 box.style.display="block";
 }
 
+}
+
+// ड्यूटी चार्ट पॉपअप दिखाने और छिपाने के फंक्शंस
+function showDutyChart() {
+    document.getElementById("dutyChartOverlay").style.display = "flex";
+}
+
+function hideDutyChart() {
+    document.getElementById("dutyChartOverlay").style.display = "none";
 }
 
 feather.replace();
@@ -1303,12 +1401,11 @@ function closeFlipModal(event) {
 }
 
 
-// आपके द्वारा दी गई Google Drive PDF का सटीक /preview लिंक सेट कर दिया गया है
-// आप यहाँ अपनी ज़रूरत के हिसाब से अलग-अलग लिंक बदल सकते हैं
-const googleDriveLinks = {
-    1: "https://drive.google.com/file/d/18dSFThqny03SRRheTpva_7jgU1qDmEcQ/preview", 
-    2: "https://drive.google.com/file/d/18dSFThqny03SRRheTpva_7jgU1qDmEcQ/preview", 
-    3: "https://drive.google.com/file/d/18dSFThqny03SRRheTpva_7jgU1qDmEcQ/preview"  
+// आपके निर्देशानुसार सीधा (.pdf) लिंक फॉर्मेट
+const directPdfLinks = {
+    1: "https://nondisclosureagreement.com/wp-content/uploads/2020/11/Basic-Non-Disclosure-Agreement.pdf", 
+    2: "https://example.com/documents/file2.pdf", 
+    3: "https://example.com/documents/file3.pdf"  
 };
 
 // पॉप-अप खोलने का फंक्शन
@@ -1316,9 +1413,9 @@ function openA4Modal(btnNumber) {
     const overlay = document.getElementById('pdfA4Overlay');
     const pdfFrame = document.getElementById('pdfA4Frame');
 
-    if (pdfFrame && googleDriveLinks[btnNumber]) {
-        // संबंधित बटन का गूगल ड्राइव लिंक आईफ्रेम में सेट करना
-        pdfFrame.src = googleDriveLinks[btnNumber];
+    if (pdfFrame && directPdfLinks[btnNumber]) {
+        // संबंधित बटन का सीधा पीडीएफ लिंक आईफ्रेम में सेट करना
+        pdfFrame.src = directPdfLinks[btnNumber];
     }
 
     if (overlay) {
@@ -1350,9 +1447,6 @@ function closeA4ModalFromOverlay(event) {
 function preventClose(event) {
     event.stopPropagation();
 }
-
-
-
 
 </script>
 

@@ -2,989 +2,867 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <!-- मोबाइल स्क्रीन पर सही फिट होने के लिए -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <title>My App</title>
+    <title>IAFZ - Indian Armed Forces</title>
 
-    <!-- 1. होम स्क्रीन आइकॉन (यहाँ अपने आइकॉन का सही रास्ता/पाथ डालें) -->
-    <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5c8fQphzonm87AQhPjECMXK2wLcdtKHwym_04wu_aFRw0ljTD-VVSTLx8tbK571K5uTpfcBqz4vIQw1bhIyfspls4A7xkG_Wr4bbJeQiBJcmQqPHjnb5RDn692A_bXei3QpppZ9xmaqiUwVWUpITgIkx2MCTVtPTzK-4gRZuaYMDBUyK7UfylvlQKJ0hD/s512/Untitled%20design.jpeg">
-    <!-- अलग-अलग iPhone साइज़ के लिए (वैकल्पिक लेकिन बेहतर प्रदर्शन के लिए) -->
+    <!-- Icons & Manifest -->
     <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5c8fQphzonm87AQhPjECMXK2wLcdtKHwym_04wu_aFRw0ljTD-VVSTLx8tbK571K5uTpfcBqz4vIQw1bhIyfspls4A7xkG_Wr4bbJeQiBJcmQqPHjnb5RDn692A_bXei3QpppZ9xmaqiUwVWUpITgIkx2MCTVtPTzK-4gRZuaYMDBUyK7UfylvlQKJ0hD/s512/Untitled%20design.jpeg">
     <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5c8fQphzonm87AQhPjECMXK2wLcdtKHwym_04wu_aFRw0ljTD-VVSTLx8tbK571K5uTpfcBqz4vIQw1bhIyfspls4A7xkG_Wr4bbJeQiBJcmQqPHjnb5RDn692A_bXei3QpppZ9xmaqiUwVWUpITgIkx2MCTVtPTzK-4gRZuaYMDBUyK7UfylvlQKJ0hD/s512/Untitled%20design.jpeg">
+    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1Pages/s32/Untitled%20design.jpeg">
 
-    <!-- 2. वेबसाइट को ऐप की तरह फुल स्क्रीन में खोलने के लिए (यूआरएल बार छिप जाएगी) -->
+    <!-- Fullscreen Settings -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    
-    <!-- 3. ऊपर की स्टेटस बार (बैटरी/नेटवर्क वाली पट्टी) को ट्रांसपेरेंट करने के लिए ताकि ऐप फुल स्क्रीन दिखे -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
-    <!-- 4. होम स्क्रीन पर ऐप का क्या नाम दिखेगा -->
     <meta name="apple-mobile-web-app-title" content="ARMAAN">
+    <meta name="theme-color" content="#000000">
 
-    <!-- 5. ज़ीरो मार्जिन और फुल स्क्रीन के लिए CSS -->
+    <link rel="manifest" href='data:application/json,{
+    "name":"IAFZ",
+    "short_name":"IAFZ",
+    "start_url":"./",
+    "display":"standalone",
+    "background_color":"#000000",
+    "theme_color":"#000000",
+    "orientation":"portrait"
+    }'>
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: x-hidden;
-            background-color: #ffffff; /* अपनी पसंद का बैकग्राउंड कलर डालें */
-            /* iPhone के नॉच (Notch) के अंदर कंटेंट को न घुसने देने के लिए पैडिंग (यदि ज़रूरत हो) */
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-    </style>
-</head>
-<body>
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
-<title>IAFZ - Indian Armed Forces</title>
-
-<!-- iPhone Fullscreen -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="IAFZ">
-<meta name="theme-color" content="#000000">
-
-<!-- Icons -->
-<link rel="apple-touch-icon" sizes="180x180"
-href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1Pages/s180/Untitled%20design.jpeg">
-
-<link rel="icon" type="image/png"
-href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1Pages/s32/Untitled%20design.jpeg">
-
-<!-- Manifest -->
-<link rel="manifest" href='data:application/json,{
-"name":"IAFZ",
-"short_name":"IAFZ",
-"start_url":"./",
-"display":"standalone",
-"background_color":"#000000",
-"theme_color":"#000000",
-"orientation":"portrait"
-}'>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/feather-icons"></script>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html,body{
-width:100%;
-height:100%;
-font-family:'Poppins',sans-serif;
-background:#000;
-overflow-x:hidden;
-}
-
-body{
--webkit-user-select:none;
-user-select:none;
-}
-
-/* PRELOADER */
-
-#preloader{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:99999;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-background:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdI2QxJb5zX481BhDXNyjuMZ-S1qf-jgD_BRAgdLvw-VSoxvggNs4kZHuQuAwBv8W0Xf8cIdZ9Fo6X5V3w8RRrWUdeRHnAsrVabO-yivbORFqdiSkvQPWXemTt-_c2wWrBxM1qfZkWeDZJ84k2pGV5AyDpT72jHarDlTwudlPDp7qJVYljzWK6-SiQBhbn/s1920/Add%20a%20heading.jpeg');
-background-size:cover;
-background-position:center;
-}
-
-.logo-box{
-width:150px;
-height:150px;
-border-radius:14px;
-overflow:hidden;
-animation:glow 2s infinite alternate;
-}
-
-.logo-box img{
-width:100%;
-height:100%;
-object-fit:cover;
-animation:zoomIn 1.8s ease forwards;
-}
-
-.loader-text{
-margin-top:22px;
-font-size:20px;
-font-weight:700;
-color:#fff;
-letter-spacing:4px;
-text-align:center;
-opacity:0;
-animation:textAnim 2.5s ease forwards;
-animation-delay:1s;
-text-shadow:0 0 12px rgba(255,255,255,0.6);
-}
-
-@keyframes zoomIn{
-0%{
-transform:scale(0.5);
-opacity:0;
-}
-100%{
-transform:scale(1);
-opacity:1;
-}
-}
-
-@keyframes glow{
-0%{
-box-shadow:0 0 10px rgba(255,255,255,0.2);
-}
-100%{
-box-shadow:0 0 35px rgba(255,255,255,0.9);
-}
-}
-
-@keyframes textAnim{
-0%{
-opacity:0;
-transform:translateY(20px);
-letter-spacing:-3px;
-}
-100%{
-opacity:1;
-transform:translateY(0);
-letter-spacing:4px;
-}
-}
-
-/* LOGIN */
-
-#loginPage{
-display:none;
-width:100%;
-height:100vh;
-position:fixed;
-top:0;
-left:0;
-background-size:cover !important;
-background-position:center !important;
-/* डिफ़ॉल्ट बैकग्राउंड (यह JavaScript से बदलेगा) */
-background:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9ZZbUSTg0UC7EKdAgZx9415RAvZvrX7cF7Q7ngf4RjiCy2bVEVJNKS0Y_ymUAppjfJZWlZtPY6n4e2IToZJqLc_tZR1g0puXfhugOezfjoY02HuFeuac_YlBeF7qq8lRDKsD3CPA-E0yuDbHMDcBJ2nLVIHK3D2WZUdP8mc9teLt_BSe4Dg9HE04DHHx/s1920/Add%20a%20heading.jpeg');
-}
-
-.login-box{
-position:absolute;
-bottom:120px;
-left:50%;
-transform:translateX(-50%);
-width:340px;
-padding:22px;
-border-radius:14px;
-background:rgba(0,0,0,0.72);
-backdrop-filter:blur(8px);
-border:1px solid rgba(255,255,255,0.15);
-}
-
-.login-box input{
-width:100%;
-padding:13px;
-border:none;
-outline:none;
-border-radius:8px;
-margin-bottom:14px;
-font-weight:600;
-text-align:center;
-}
-
-.login-box button{
-width:100%;
-padding:13px;
-border:none;
-border-radius:8px;
-background:linear-gradient(90deg,#1d4ed8,#ef4444);
-color:#fff;
-font-weight:700;
-cursor:pointer;
-}
-
-.footer{
-position:absolute;
-bottom:18px;
-width:100%;
-text-align:center;
-color:#fff;
-font-size:13px;
-opacity:0.7;
-}
-
-/* LOADER */
-
-#loading{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.9);
-z-index:999999;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-color:#fff;
-}
-
-.spin{
-width:50px;
-height:50px;
-border:4px solid rgba(255,255,255,0.2);
-border-top:4px solid #fff;
-border-radius:50%;
-animation:spin 1s linear infinite;
-margin-bottom:15px;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-/* DASHBOARD */
-
-#dashboard{
-display:none;
-width:100%;
-min-height:100vh;
-background:url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=');
-background-size:cover;
-background-position:center;
-padding-bottom:65px; /* नीचे स्ट्रिप के लिए स्पेस */
-}
-
-.topbar{
-position:sticky;
-top:0;
-z-index:999;
-background:#fff;
-padding:16px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-.content{
-max-width:1000px;
-margin:auto;
-padding:20px;
-background:rgba(255,255,255,0.92);
-}
-
-.officer{
-text-align:center;
-margin-top:10px;
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.officer img{
-width:210px;
-height:280px;
-object-fit:cover;
-border-radius:12px;
-border:4px solid #ddd;
-margin:18px auto 0 auto;
-}
-
-.table-box{
-overflow-x:auto;
-margin-top:28px;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-}
-
-table td{
-padding:14px;
-border:1px solid #ddd;
-font-size:14px;
-}
-
-table td:first-child{
-background:#f3f4f6;
-font-weight:700;
-width:32%;
-}
-
-/* TABLE SMALL CUSTOM IMAGES STYLE */
-.td-flex {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-vertical-align: middle;
-}
-.td-flex img {
-width: 16px;  /* बहुत छोटा चित्र आकार */
-height: 16px;
-object-fit: contain;
-}
-
-/* BUTTONS */
-
-.btn-row{
-display:flex;
-gap:6px;
-margin-top:14px;
-justify-content:center;
-align-items:center;
-flex-direction: row !important;
-width: 100%;
-}
-
-.action-btn{
-flex:1;
-padding:8px 4px;
-border:none;
-border-radius:6px;
-color:#fff;
-font-weight:700;
-font-size:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:3px;
-cursor:pointer;
-white-space:nowrap;
-}
-
-.action-btn svg{
-width: 12px !important;
-height: 12px !important;
-}
-
-.red{background:#D90000;}
-.blue{background:#000080;}
-.sky{background:#4CC7FC;}
-
-/* ACCORDION */
-
-.accordion{
-margin-top:16px;
-border:1px solid #ddd;
-border-radius:10px;
-overflow:hidden;
-background:#fff;
-}
-
-.acc-head{
-padding:18px;
-font-weight:700;
-display:flex;
-justify-content:space-between;
-align-items:center;
-cursor:pointer;
-background:#fff;
-}
-
-.acc-body{
-display:none;
-padding:18px;
-border-top:1px solid #eee;
-font-size:14px;
-line-height:1.8;
-}
-
-.footer2{
-margin-top:35px;
-background:#c1121f;
-padding:18px;
-color:#fff;
-text-align:center;
-border-radius:10px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-}
-
-.footer2 img {
-margin: 0 auto 10px auto;
-}
-
-/* BOTTOM FIXED TRICOLOR STRIPE WITH SCROLL */
-#tricolorStripe {
-display: none;
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-height: 6px;
-z-index: 10000;
-background: linear-gradient(to right, #D90000 33.33%, #000080 33.33%, #000080 66.66%, #4CC7FC 66.66%);
-box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
-}
-
-@media(max-width:768px){
-
-.login-box{
-width:92%;
-}
-
-.btn-row {
-display:flex;
-flex-direction: row !important;
-gap: 4px;
-}
-
-.action-btn{
-width:auto;
-font-size: 9px;
-padding: 8px 2px;
-}
-
-.officer img{
-width:180px;
-height:240px;
-}
-
-table td{
-font-size:13px;
-padding:10px;
-}
-
-.loader-text{
-font-size:16px;
-}
-}
-
-/* सुरक्षित बटन कंटेनर (यह आपकी मुख्य वेबसाइट के लेआउट को डिस्टर्ब नहीं करेगा) */
-.custom-btn-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 10px auto;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-/* तीनों बटनों को मोबाइल में सख्त रूप से एक लाइन में रखने के लिए */
-.custom-btn-container .my-button-row {
-    display: flex !important;
-    gap: 20px !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-}
-
-/* छोटे बटन की सुरक्षित स्टाइल */
-.custom-btn-container .my-popup-btn {
-    flex: 1 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    padding: 10px 5px !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-    white-space: nowrap !important;
-    transition: transform 0.2s, box-shadow 0.2s !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
-    box-sizing: border-box !important;
-}
-
-.custom-btn-container .my-popup-btn:hover {
-    transform: translateY(-2px) !important;
-}
-
-.custom-btn-container .my-popup-btn i {
-    font-size: 13px !important;
-}
-
-/* -------------------------------------------- */
-/* यहाँ कोडिंग से बटनों के रंग बदलें (Change Colors Here) */
-/* -------------------------------------------- */
-#popup-btn1 { background: linear-gradient(135deg, #D90000, #D90000) !important; }
-#popup-btn2 { background: linear-gradient(135deg, #000080, #000080) !important; }
-#popup-btn3 { background: linear-gradient(135deg, #4CC7FC, #4CC7FC) !important; }
-/* -------------------------------------------- */
-
-/* फुल स्क्रीन पॉप-अप ओवरले */
-.my-modal-overlay {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: rgba(0, 0, 0, 0.85) !important;
-    backdrop-filter: blur(5px) !important;
-    display: none;
-    justify-content: center !important;
-    align-items: center !important;
-    z-index: 999999 !important;
-    box-sizing: border-box !important;
-}
-
-/* पॉप-अप का मुख्य कंटेंट बॉक्स (अब यह पहचान पत्र के आकार में चौड़ा होगा) */
-.my-modal-content {
-    position: relative !important;
-    background: transparent !important;
-    padding: 10px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 95% !important;
-    max-width: 400px !important; /* बॉक्स को थोड़ा चौड़ा किया ताकि ID कार्ड फिट आ सके */
-    box-sizing: border-box !important;
-}
-
-/* बंद करने का बटन (X) */
-.my-close-btn {
-    position: absolute !important;
-    top: -45px !important;
-    right: 10px !important;
-    color: white !important;
-    font-size: 32px !important;
-    cursor: pointer !important;
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-}
-
-/* 3D Flip Card - पहचान पत्र का वास्तविक साइज */
-.my-flip-card {
-    background-color: transparent !important;
-    width: 100% !important;
-    max-width: 336px !important; 
-    aspect-ratio: 85.6 / 53.98 !important; /* पहचान पत्र का मानक अनुपात */
-    perspective: 1000px !important;
-    cursor: pointer !important;
-    box-sizing: border-box !important;
-}
-
-.my-flip-card-inner {
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
-    text-align: center !important;
-    transition: transform 0.5s !important;
-    transform-style: preserve-3d !important;
-}
-
-.my-flip-card.flipped .my-flip-card-inner {
-    transform: rotateY(180deg) !important;
-}
-
-.my-flip-card-front, .my-flip-card-back {
-    position: absolute !important;
-    width: 100% !important;
-    height: 100% !important;
-    -webkit-backface-visibility: hidden !important;
-    backface-visibility: hidden !important;
-    border-radius: 8px !important; /* पहचान पत्र के कोनों जैसे हल्के घुमावदार कोने */
-    overflow: hidden !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-}
-
-.my-flip-card-front img, .my-flip-card-back img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: fill !important; /* 'fill' या 'cover' ताकि इमेज कार्ड के ढांचे में पूरी तरह फिट बैठे */
-}
-
-.my-flip-card-back {
-    transform: rotateY(180deg) !important;
-}
-
-.my-hint-text {
-    color: #ccc !important;
-    margin-top: 15px !important;
-    font-size: 13px !important;
-    font-family: sans-serif !important;
-    text-align: center !important;
-}
-
-
-/* -------------------------------------------- */
-/* सुरक्षित और सीमित सीएसएस (वेबसाइट को डिस्टर्ब नहीं करेगा) */
-/* -------------------------------------------- */
-
-/* मुख्य कंटेनर */
-.pdf-portal-container {
-    width: 100% !important;
-    max-width: 400px !important;
-    margin: 10px auto !important;
-    padding: 10px !important;
-    box-sizing: border-box !important;
-}
-
-/* तीनों बटन एक लाइन में */
-.pdf-portal-container .pdf-btn-row {
-    display: flex !important;
-    gap: 10px !important;
-    justify-content: space-between !important;
-    width: 80% !important;
-
-    /* पूरा बटन सेक्शन राइट साइड में खिसकाने के लिए */
-    margin-left: 20px !important;
-
-    box-sizing: border-box !important;
-}
-
-/* बटन डिज़ाइन */
-.pdf-portal-container .pdf-small-btn {
-    flex: 1 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 5px !important;
-
-    padding: 8px 4px !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-
-    color: white !important;
-    border: none !important;
-    border-radius: 6px !important;
-
-    cursor: pointer !important;
-    white-space: nowrap !important;
-
-    transition: transform 0.2s !important;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15) !important;
-
-    box-sizing: border-box !important;
-}
-
-/* Hover Effect */
-.pdf-portal-container .pdf-small-btn:hover {
-    transform: translateY(-2px) !important;
-}
-
-/* अलग-अलग बटन रंग */
-.pdf-portal-container .view-btn {
-    background: #007bff !important;
-}
-
-.pdf-portal-container .download-btn {
-    background: #28a745 !important;
-}
-
-.pdf-portal-container .share-btn {
-    background: #ff5722 !important;
-}
-
-/* मोबाइल रिस्पॉन्सिव */
-@media screen and (max-width: 480px) {
-
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* 🚫 एंटी-सेव और एंटी-कॉपी प्रोटेक्शन (कोई भी चित्र सेव नहीं हो सकेगा) */
+    html, body {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        background-color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        
+        -webkit-touch-callout: none; /* मोबाइल पर लॉन्ग-प्रेस मेनू डिसेबल करें */
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none; /* टेक्स्ट सिलेक्शन डिसेबल करें */
+    }
+
+    input {
+        -webkit-user-select: text; /* इनपुट बॉक्स में टाइप करने के लिए अनुमति */
+        user-select: text;
+    }
+
+    img {
+        -webkit-user-drag: none; /* चित्र को खींचकर सेव करने से रोकें */
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        pointer-events: none; /* चित्र पर क्लिक और लॉन्ग-प्रेस को पूरी तरह ब्लॉक करें */
+    }
+
+    /* PRELOADER */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdI2QxJb5zX481BhDXNyjuMZ-S1qf-jgD_BRAgdLvw-VSoxvggNs4kZHuQuAwBv8W0Xf8cIdZ9Fo6X5V3w8RRrWUdeRHnAsrVabO-yivbORFqdiSkvQPWXemTt-_c2wWrBxM1qfZkWeDZJ84k2pGV5AyDpT72jHarDlTwudlPDp7qJVYljzWK6-SiQBhbn/s1920/Add%20a%20heading.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .logo-box {
+        width: 150px;
+        height: 150px;
+        border-radius: 14px;
+        overflow: hidden;
+        animation: glow 2s infinite alternate;
+    }
+
+    .logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: zoomIn 1.8s ease forwards;
+    }
+
+    .loader-text {
+        margin-top: 22px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 4px;
+        text-align: center;
+        opacity: 0;
+        animation: textAnim 2.5s ease forwards;
+        animation-delay: 1s;
+        text-shadow: 0 0 12px rgba(255,255,255,0.6);
+    }
+
+    @keyframes zoomIn {
+        0% { transform: scale(0.5); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes glow {
+        0% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+        100% { box-shadow: 0 0 35px rgba(255,255,255,0.9); }
+    }
+
+    @keyframes textAnim {
+        0% { opacity: 0; transform: translateY(20px); letter-spacing: -3px; }
+        100% { opacity: 1; transform: translateY(0); letter-spacing: 4px; }
+    }
+
+    /* LOGIN */
+    #loginPage {
+        display: none;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-size: cover !important;
+        background-position: center !important;
+        background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9ZZbUSTg0UC7EKdAgZx9415RAvZvrX7cF7Q7ngf4RjiCy2bVEVJNKS0Y_ymUAppjfJZWlZtPY6n4e2IToZJqLc_tZR1g0puXfhugOezfjoY02HuFeuac_YlBeF7qq8lRDKsD3CPA-E0yuDbHMDcBJ2nLVIHK3D2WZUdP8mc9teLt_BSe4Dg9HE04DHHx/s1920/Add%20a%20heading.jpeg');
+        overflow: hidden;
+    }
+
+    /* --- लॉगिन बैकग्राउंड पर 3D Glass Sweep Effect --- */
+    #loginPage::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 80%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); 
+        transform: skewX(-25deg);
+        animation: bgTrue3DShine 3s infinite;
+        z-index: 1; 
+        pointer-events: none; 
+    }
+
+    @keyframes bgTrue3DShine {
+        0% { left: -150%; }
+        40% { left: 150%; }
+        100% { left: 150%; }
+    }
+
+    .login-box {
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 340px;
+        padding: 22px;
+        border-radius: 14px;
+        background: rgba(0,0,0,0.72);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.15);
+        z-index: 10;
+    }
+
+    .login-box input {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        margin-bottom: 14px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .login-box button {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(90deg,#1d4ed8,#ef4444);
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 18px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 13px;
+        opacity: 0.7;
+    }
+
+    /* LOADER */
+    #loading {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 999999;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+    }
+
+    .spin {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255,255,255,0.2);
+        border-top: 4px solid #fff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+
+    /* DASHBOARD */
+    #dashboard {
+        display: none;
+        width: 100%;
+        min-height: 100vh;
+        background: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=');
+        background-size: cover;
+        background-position: center;
+        padding-bottom: 65px;
+    }
+
+    .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background: #fff;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .content {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+        background: rgba(255,255,255,0.92);
+    }
+
+    .officer {
+        text-align: center;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .officer img {
+        width: 210px;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 4px solid #ddd;
+        margin: 18px auto 0 auto;
+    }
+
+    .table-box {
+        overflow-x: auto;
+        margin-top: 28px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table td {
+        padding: 14px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    table td:first-child {
+        background: #f3f4f6;
+        font-weight: 700;
+        width: 32%;
+    }
+
+    .td-flex {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        vertical-align: middle;
+    }
+    .td-flex img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+    }
+
+    /* BUTTONS */
+    .btn-row {
+        display: flex;
+        gap: 6px;
+        margin-top: 14px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row !important;
+        width: 100%;
+    }
+
+    .action-btn {
+        flex: 1;
+        padding: 8px 4px;
+        border: none;
+        border-radius: 6px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    .action-btn svg { width: 12px !important; height: 12px !important; }
+    .red { background: #D90000; }
+    .blue { background: #000080; }
+    .sky { background: #4CC7FC; }
+
+    /* ACCORDION */
+    .accordion {
+        margin-top: 16px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .acc-head {
+        padding: 18px;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background: #fff;
+    }
+
+    .acc-body {
+        display: none;
+        padding: 18px;
+        border-top: 1px solid #eee;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .footer2 {
+        margin-top: 35px;
+        background: #c1121f;
+        padding: 18px;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer2 img {
+        margin: 0 auto 10px auto;
+    }
+
+    /* BOTTOM FIXED TRICOLOR STRIPE WITH SCROLL */
+    #tricolorStripe {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        z-index: 10000;
+        background: linear-gradient(to right, #D90000 33.33%, #000080 33.33%, #000080 66.66%, #4CC7FC 66.66%);
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    }
+
+    @media(max-width:768px) {
+        .login-box { width: 92%; }
+        .btn-row { display: flex; flex-direction: row !important; gap: 4px; }
+        .action-btn { width: auto; font-size: 9px; padding: 8px 2px; }
+        .officer img { width: 180px; height: 240px; }
+        table td { font-size: 13px; padding: 10px; }
+        .loader-text { font-size: 16px; }
+    }
+
+    /* सुरक्षित बटन कंटेनर */
+    .custom-btn-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 10px auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .custom-btn-container .my-button-row {
+        display: flex !important;
+        gap: 20px !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .custom-btn-container .my-popup-btn {
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        padding: 10px 5px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        white-space: nowrap !important;
+        transition: transform 0.2s, box-shadow 0.2s !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.12) !important;
+        box-sizing: border-box !important;
+    }
+
+    .custom-btn-container .my-popup-btn:hover {
+        transform: translateY(-2px) !important;
+    }
+
+    .custom-btn-container .my-popup-btn i { font-size: 13px !important; }
+
+    #popup-btn1 { background: linear-gradient(135deg, #D90000, #D90000) !important; }
+    #popup-btn2 { background: linear-gradient(135deg, #000080, #000080) !important; }
+    #popup-btn3 { background: linear-gradient(135deg, #4CC7FC, #4CC7FC) !important; }
+
+    /* फुल स्क्रीन पॉप-अप ओवरले */
+    .my-modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(0, 0, 0, 0.85) !important;
+        backdrop-filter: blur(5px) !important;
+        display: none;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 999999 !important;
+        box-sizing: border-box !important;
+    }
+
+    .my-modal-content {
+        position: relative !important;
+        background: transparent !important;
+        padding: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 95% !important;
+        max-width: 400px !important;
+        box-sizing: border-box !important;
+    }
+
+    .my-close-btn {
+        position: absolute !important;
+        top: -45px !important;
+        right: 10px !important;
+        color: white !important;
+        font-size: 32px !important;
+        cursor: pointer !important;
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    /* 3D Flip Card */
+    .my-flip-card {
+        background-color: transparent !important;
+        width: 100% !important;
+        max-width: 336px !important; 
+        aspect-ratio: 85.6 / 53.98 !important;
+        perspective: 1000px !important;
+        cursor: pointer !important;
+        box-sizing: border-box !important;
+    }
+
+    .my-flip-card-inner {
+        position: relative !important;
+        width: 100% !important;
+        height: 100% !important;
+        text-align: center !important;
+        transition: transform 0.5s !important;
+        transform-style: preserve-3d !important;
+    }
+
+    .my-flip-card.flipped .my-flip-card-inner {
+        transform: rotateY(180deg) !important;
+    }
+
+    .my-flip-card-front, .my-flip-card-back {
+        position: absolute !important;
+        width: 100% !important;
+        height: 100% !important;
+        -webkit-backface-visibility: hidden !important;
+        backface-visibility: hidden !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    }
+
+    .my-flip-card-front img, .my-flip-card-back img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: fill !important;
+    }
+
+    .my-flip-card-back {
+        transform: rotateY(180deg) !important;
+    }
+
+    /* PDF PORTAL */
     .pdf-portal-container {
-        max-width: 100% !important;
-        padding: 8px !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 10px auto !important;
+        padding: 10px !important;
+        box-sizing: border-box !important;
     }
 
     .pdf-portal-container .pdf-btn-row {
-        width: 90% !important;
-        margin-left: 15px !important;
-        gap: 8px !important;
+        display: flex !important;
+        gap: 10px !important;
+        justify-content: space-between !important;
+        width: 80% !important;
+        margin-left: 20px !important;
+        box-sizing: border-box !important;
     }
 
     .pdf-portal-container .pdf-small-btn {
-        font-size: 12px !important;
-        padding: 7px 3px !important;
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        padding: 8px 4px !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 6px !important;
+        cursor: pointer !important;
+        white-space: nowrap !important;
+        transition: transform 0.2s !important;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15) !important;
+        box-sizing: border-box !important;
     }
-}
 
-/* -------------------------------------------- */
-/* यहाँ कोडिंग से बटनों के रंग बदलें (Change Colors Here) */
-/* -------------------------------------------- */
-#pdf-btn1 { background: linear-gradient(135deg, #ff3333, #bd0000) !important; }
-#pdf-btn2 { background: linear-gradient(135deg, #0088cc, #005580) !important; }
-#pdf-btn3 { background: linear-gradient(135deg, #2ecc71, #27ae60) !important; }
-/* -------------------------------------------- */
+    .pdf-portal-container .pdf-small-btn:hover {
+        transform: translateY(-2px) !important;
+    }
 
-/* फुल स्क्रीन पॉप-अप ओवरले (पीछे का सब कुछ छुपाने के लिए) */
-.pdf-a4-overlay {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: rgba(26, 26, 26, 0.9) !important; /* गहरा धुंधला बैकग्राउंड */
-    display: none; /* डिफ़ॉल्ट रूप से बंद */
-    justify-content: center !important;
-    align-items: center !important;
-    z-index: 999999 !important;
-    padding: 40px 10px 10px 10px !important; /* ऊपर स्पेस मैनेज किया */
-    box-sizing: border-box !important;
-}
+    @media screen and (max-width: 480px) {
+        .pdf-portal-container { max-width: 100% !important; padding: 8px !important; }
+        .pdf-portal-container .pdf-btn-row { width: 90% !important; margin-left: 15px !important; gap: 8px !important; }
+        .pdf-portal-container .pdf-small-btn { font-size: 12px !important; padding: 7px 3px !important; }
+    }
 
-/* A4 साइज का मुख्य PDF फ्रेम कंटेनर - सटीक रूप से सेट किया गया अनुपात */
-.pdf-a4-content {
-    position: relative !important;
-    width: 100% !important;
-    max-width: 450px !important; /* मोबाइल और स्क्रीन के लिए बेस्ट विड्थ */
-    height: 80vh !important; /* स्क्रीन की ऊंचाई के हिसाब से व्यवस्थित */
-    max-height: 636px !important; /* चौड़ाई और ऊंचाई का A4 (1:1.414) अनुपात बनाए रखने के लिए */
-    background: white !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    box-sizing: border-box !important;
-}
+    #pdf-btn1 { background: linear-gradient(135deg, #ff3333, #bd0000) !important; }
+    #pdf-btn2 { background: linear-gradient(135deg, #0088cc, #005580) !important; }
+    #pdf-btn3 { background: linear-gradient(135deg, #2ecc71, #27ae60) !important; }
 
-/* पीडीएफ फ्रेम स्टाइल - पूरी तरह ए4 के बॉक्स में सेट */
-.pdf-a4-content iframe {
-    width: 100% !important;
-    height: 100% !important;
-    border: none !important;
-    display: block !important;
-}
+    .pdf-a4-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: rgba(26, 26, 26, 0.9) !important;
+        display: none;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 999999 !important;
+        padding: 40px 10px 10px 10px !important;
+        box-sizing: border-box !important;
+    }
 
-/* लाल रंग का क्रॉस क्लोज बटन (X) */
-.pdf-a4-close-btn {
-    position: absolute !important;
-    top: -45px !important;
-    right: 0px !important;
-    color: #ff3333 !important; /* गहरा लाल रंग */
-    background: #ffffff !important; /* सफेद गोलाकार बैकग्राउंड ताकि साफ़ दिखे */
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 50% !important;
-    font-size: 22px !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    border: none !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    line-height: 1 !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
-    transition: background 0.2s, color 0.2s !important;
-    z-index: 1000000 !important;
-}
+    .pdf-a4-content {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 450px !important;
+        height: 80vh !important;
+        max-height: 636px !important;
+        background: white !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
 
-.pdf-a4-close-btn:hover {
-    background: #ff3333 !important;
-    color: #ffffff !important;
-}
+    .pdf-a4-content iframe {
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+        display: block !important;
+    }
 
-/* ड्यूटी चार्ट पॉपअप के लिए अतिरिक्त सीएसएस */
-.duty-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 100005;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-}
-.duty-box {
-    background: #ffffff;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    animation: zoomIn 0.3s ease;
-}
-.duty-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #000080;
-    text-align: center;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-    border-bottom: 2px solid #f3f4f6;
-    padding-bottom: 8px;
-}
-.duty-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-.duty-table th {
-    background: #f3f4f6;
-    color: #333;
-    font-weight: 700;
-    font-size: 12px;
-    padding: 10px 8px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-.duty-table td {
-    padding: 10px 8px;
-    border: 1px solid #ddd;
-    font-size: 12px;
-    color: #333;
-}
-.duty-table tr:nth-child(even) {
-    background: #fafafa;
-}
+    .pdf-a4-close-btn {
+        position: absolute !important;
+        top: -45px !important;
+        right: 0px !important;
+        color: #ff3333 !important;
+        background: #ffffff !important;
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 50% !important;
+        font-size: 22px !important;
+        font-weight: bold !important;
+        cursor: pointer !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
+        transition: background 0.2s, color 0.2s !important;
+        z-index: 1000000 !important;
+    }
 
-/* =========================================
-   BRANCH SELECTION CSS 
-   ========================================= */
-#branchSelectionPage {
-    display: none;
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99990; 
-    overflow: hidden;
-}
-.branch-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKgvHIOA3VBTdiVp3tmilm5SToN-JvMGEej1muyZKTT-IqCyC6a4gxw8R8AySnVNe5PgkCczt1Po0J82jsrfz7rFAkE0GWrAjsCcFJA7w4WvCWIyYxJw0UlhckrwhHztuOmIhGKtQFdCjnbGfp9DZcQ380RGNWF686LaYKlNCTXEWqA90xrw091jfrRU8a/s1920/Add%20a%20heading.jpeg') center/cover;
-   
-}
-@keyframes zoomInOut {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.15); }
-}
-.branch-box {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 432px;
-    padding: 22px;
-    border-radius: 14px;
-    background: rgba(0,0,0,0.72);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.15);
-}
-.custom-dropdown-container {
-    position: relative;
-    width: 100%;
-    font-family: 'Poppins', sans-serif;
-}
-.custom-dropdown-header {
-    width: 100%;
-    padding: 13px;
-    background: #fff;
-    border-radius: 8px;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    color: #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.custom-dropdown-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    border-radius: 8px;
-    margin-top: 8px;
-    overflow: hidden;
-    display: none;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    z-index: 10;
-}
-.custom-dropdown-list.show {
-    display: block;
-}
-.custom-dropdown-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
-    cursor: pointer;
-    font-weight: 600;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    transition: background 0.2s;
-}
-.custom-dropdown-item:last-child {
-    border-bottom: none;
-}
-.custom-dropdown-item:hover {
-    background: #f1f1f1;
-}
-.custom-dropdown-item img {
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
-    object-fit: contain;
-}
+    .pdf-a4-close-btn:hover {
+        background: #ff3333 !important;
+        color: #ffffff !important;
+    }
 
-/* =========================================
-   नया GIF LOADER SCREEN (4 सेकेंड के लिए) 
-   ========================================= */
-#branchGifLoader {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: #fff;
-    z-index: 999999;
-    justify-content: center;
-    align-items: center;
-}
-#branchGifLoader img {
-    width: 200px;
-    height: 230px;
-    object-fit: contain;
-}
-</style>
+    /* DUTY CHART POPUP */
+    .duty-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 100005;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+    }
+    .duty-box {
+        background: #ffffff;
+        width: 100%;
+        max-width: 500px;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        animation: zoomIn 0.3s ease;
+    }
+    .duty-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000080;
+        text-align: center;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        border-bottom: 2px solid #f3f4f6;
+        padding-bottom: 8px;
+    }
+    .duty-table { width: 100%; border-collapse: collapse; }
+    .duty-table th { background: #f3f4f6; color: #333; font-weight: 700; font-size: 12px; padding: 10px 8px; text-align: left; border: 1px solid #ddd; }
+    .duty-table td { padding: 10px 8px; border: 1px solid #ddd; font-size: 12px; color: #333; }
+    .duty-table tr:nth-child(even) { background: #fafafa; }
+
+    /* BRANCH SELECTION */
+    #branchSelectionPage {
+        display: none;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99990; 
+        overflow: hidden;
+    }
+    .branch-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKgvHIOA3VBTdiVp3tmilm5SToN-JvMGEej1muyZKTT-IqCyC6a4gxw8R8AySnVNe5PgkCczt1Po0J82jsrfz7rFAkE0GWrAjsCcFJA7w4WvCWIyYxJw0UlhckrwhHztuOmIhGKtQFdCjnbGfp9DZcQ380RGNWF686LaYKlNCTXEWqA90xrw091jfrRU8a/s1920/Add%20a%20heading.jpeg') center/cover;
+    }
+    .branch-box {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 432px;
+        padding: 22px;
+        border-radius: 14px;
+        background: rgba(0,0,0,0.72);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+    .custom-dropdown-container {
+        position: relative;
+        width: 100%;
+        font-family: 'Poppins', sans-serif;
+    }
+    .custom-dropdown-header {
+        width: 100%;
+        padding: 13px;
+        background: #fff;
+        border-radius: 8px;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        color: #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .custom-dropdown-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-radius: 8px;
+        margin-top: 8px;
+        overflow: hidden;
+        display: none;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        z-index: 10;
+    }
+    .custom-dropdown-list.show { display: block; }
+
+    /* 3D GLASS SWEEP EFFECT CSS (ड्रॉपडाउन आइकॉन्स के लिए) */
+    .glass-sweep {
+        position: relative;
+        overflow: hidden;
+    }
+    .glass-sweep::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+        transform: skewX(-25deg);
+        animation: true3DShine 2s infinite;
+        z-index: 2;
+        pointer-events: none;
+    }
+    @keyframes true3DShine {
+        0% { left: -150%; }
+        40% { left: 150%; }
+        100% { left: 150%; }
+    }
+
+    .icon-shine-wrap {
+        width: 26px;  
+        height: 26px;
+        margin-right: 12px;
+        border-radius: 50%;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .icon-shine-wrap img { width: 100%; height: 100%; object-fit: contain; }
+
+    .custom-dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        cursor: pointer;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        transition: background 0.2s;
+    }
+    .custom-dropdown-item:last-child { border-bottom: none; }
+    .custom-dropdown-item:hover { background: #f1f1f1; }
+
+    /* GIF LOADER SCREEN (4 सेकेंड के लिए) */
+    #branchGifLoader {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        z-index: 999999;
+        justify-content: center;
+        align-items: center;
+    }
+    #branchGifLoader img { width: 200px; height: 230px; object-fit: contain; }
+
+    /* Back To Login Button */
+    .back-to-branch-btn {
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-block;
+        margin-top: 15px;
+        animation: backBtnAnim 2s infinite;
+    }
+    @keyframes backBtnAnim {
+        0% { transform: translateY(0px); opacity: 0.8; }
+        50% { transform: translateY(3px); opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.8); }
+        100% { transform: translateY(0px); opacity: 0.8; }
+    }
+    </style>
 </head>
 
 <body oncontextmenu="return false">
 
 <!-- PRELOADER -->
 <div id="preloader">
-
-<div class="logo-box">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png">
+    <div class="logo-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png" alt="Preloader Image">
+    </div>
+    <div class="loader-text">INDIAN ARMED FORCES</div>
 </div>
 
-<div class="loader-text">
-INDIAN ARMED FORCES
-</div>
-
-</div>
-
-<!-- BRANCH SELECTION पेज -->
+<!-- BRANCH SELECTION -->
 <div id="branchSelectionPage">
     <div class="branch-bg"></div>
     <div class="branch-box">
@@ -996,15 +874,15 @@ INDIAN ARMED FORCES
             </div>
             <div class="custom-dropdown-list" id="branchList">
                 <div class="custom-dropdown-item" onclick="goToLogin('ARMY')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Indian_Army_Insignia_circular.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Army">
+                    <div class="icon-shine-wrap glass-sweep"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Indian_Army_Insignia_circular.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="Army"></div>
                     INDIAN ARMY
                 </div>
                 <div class="custom-dropdown-item" onclick="goToLogin('NAVY')">
-                    <img src="https://www.joinindiannavy.gov.in/images/octaginal-crest.png" alt="Navy">
+                    <div class="icon-shine-wrap glass-sweep"><img src="https://www.joinindiannavy.gov.in/images/octaginal-crest.png" alt="Navy"></div>
                     INDIAN NAVY
                 </div>
                 <div class="custom-dropdown-item" onclick="goToLogin('AIRFORCE')">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Badge_of_the_Indian_Air_Force.png" alt="Air Force">
+                    <div class="icon-shine-wrap glass-sweep"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Badge_of_the_Indian_Air_Force.png" alt="Air Force"></div>
                     INDIAN AIR FORCE
                 </div>
             </div>
@@ -1012,554 +890,274 @@ INDIAN ARMED FORCES
     </div>
 </div>
 
-<!-- 4 सेकंड का GIF LOADER -->
+<!-- GIF LOADER -->
 <div id="branchGifLoader">
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgld2AVe57NTcm9Lu0r-9SMHFHvQVCpCwuiS4t6rdZZ8HFk79DVFKm7rcWnE4vT6HjisZTQ1bDNhnfNoWnucFtbgIYWv3OdkXgDOgxQ5Ojr8J4GqFgjWjA45FvePdvXp1QWC76qVaF1jp0FSsmrFJvDDC2N64RgRWFbHJfliU5znXaCsKRppNQj77rcPgyI/s256/Video.gif" alt="Loading...">
 </div>
 
 <!-- LOGIN -->
 <div id="loginPage">
-
-<div class="login-box">
-
-<div id="error"
-style="display:none;color:#ff4d4d;font-size:12px;margin-bottom:10px;font-weight:700;text-align:center;">
-NO RECORD FOUND
-</div>
-
-<input type="text" id="serviceID" placeholder="ENTER SERVICE ID">
-
-<button onclick="loginNow()">PROCEED</button>
-
-</div>
-
+    <div class="login-box">
+        <div id="error" style="display:none;color:#ff4d4d;font-size:12px;margin-bottom:10px;font-weight:700;text-align:center;">
+            NO RECORD FOUND
+        </div>
+        <input type="text" id="serviceID" placeholder="ENTER SERVICE ID">
+        <button onclick="loginNow()">PROCEED</button>
+        <div style="text-align: center;">
+            <div class="back-to-branch-btn" onclick="backToBranch()">BACK TO LOGIN</div>
+        </div>
+    </div>
 </div>
 
 <!-- LOADING -->
 <div id="loading">
-<div class="spin"></div>
-<div>AUTHENTICATING...</div>
+    <div class="spin"></div>
+    <div>AUTHENTICATING...</div>
 </div>
 
 <!-- DASHBOARD -->
 <div id="dashboard">
-
-<div class="topbar">
-<div class="flex items-center gap-2">
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Armed_forces_logo.png" style="height:50px;">
-<span style="font-size:12px;font-weight:700;">OFFICIAL PORTAL</span>
-</div>
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Ministry_of_Defence_India.svg"
-style="height:45px;">
-</div>
-
-<div class="content">
-
-<div class="officer">
-<h2 style="font-size:28px;font-weight:700;">Capt. Manish Chaudhary</h2>
-
-<p style="color:#555;margin-top:6px;">
-Yudh Seva Medal, Sena Medal,<br>
-COAS Commendation
-</p>
-
-<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCHloBHTkY8lAYNgE2CFaQOfVCH5jD9S3Y5EdnNKmLM3-n0Uv6wphxOW8ZmNw_frMef_XJ2RhyaELuYiZ7VqMQIhFJU6PdSsHUHIBWbklZZo_Qr5IX98Dk3BujZljBTAtO7PYS-5TaF8Ju36QeUfBQB-52lBDnRRNMtsTBr8gz8l4WetEL-Q9HUj6EwlO4/s523/Untitled%20design.jpeg">
-</div>
-
-<!-- TABLE -->
-<div class="table-box">
-
-<table>
-
-<tr>
-<td>Allegiance</td>
-<td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png" alt="India Flag"> India</span></td>
-</tr>
-
-<tr>
-<td>Branch</td>
-<td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Indian_Army.svg/3840px-Flag_of_Indian_Army.svg.png" alt="Army Shield"> Indian Army</span></td>
-</tr>
-
-<tr>
-<td>Years of Service</td>
-<td>13 June 2020 – Serving</td>
-</tr>
-
-<tr>
-<td>Rank</td>
-<td>Captain</td>
-</tr>
-
-<tr>
-<td>Service ID</td>
-<td>IC-80129D</td>
-</tr>
-
-<tr>
-<td>Unit</td>
-<td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Dogra_Regiment.svg/1280px-Dogra_Regiment.svg.png" alt="Unit Target"> 18 Dogra</span></td>
-</tr>
-
-<tr>
-<td>First Posting</td>
-<td>
-Platoon Commander, Delta Company, Northern Command HQ, Udhampur, Jammu & Kashmir
-<br><b>Year 2020 - 2023</b>
-</td>
-</tr>
-
-<tr>
-<td>Currently Deployed</td>
-<td>
-Staff Officer Grade II Operations (SO2 OPS) HQ I Corps Strike 1 Mathura U.P
-<br><b>Year 2023 - Present</b>
-</td>
-</tr>
-
-<tr>
-<td>Conflicts</td>
-<td>
-• OPS Sindoor<br>
-• OPS Mahadev<br>
-• OPS Jammu Drill<br>
-• Counter-Insurgency OPS<br>
-• POK Border OPS
-</td>
-</tr>
-
-<tr>
-<td>Awards</td>
-<td>
-<div style="display: flex; flex-direction: column; gap: 6px;">
-<span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Yudh_Seva_Medal_ribbon.svg/1280px-Yudh_Seva_Medal_ribbon.svg.png" alt="Medal"> Yudh Seva Medal</span>
-<span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sena_Medal_ribbon.svg/1280px-Sena_Medal_ribbon.svg.png" alt="Medal"> Sena Medal</span>
-<span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Army_Commander_Commendation_disc.png/1280px-Army_Commander_Commendation_disc.png" alt="Medal"> COAS Commendation</span>
-</div>
-</td>
-</tr>
-
-</table>
-
-</div>
-
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- आपकी अलग CSS फाइल का लिंक -->
-<link rel="stylesheet" href="style.css">
-
-<!-- मुख्य बटन कंटेनर -->
-<div class="custom-btn-container">
-    <div class="my-button-row">
-        <!-- बटन 1 -->
-        <button class="my-popup-btn" id="popup-btn1" onclick="openFlipModal(1)">
-            <i class="fa-solid fa-id-card"></i> Defence ID
-        </button>
-
-        <!-- बटन 2 -->
-        <button class="my-popup-btn" id="popup-btn2" onclick="openFlipModal(2)">
-            <i class="fa-solid fa-id-card"></i> CSD
-        </button>
-
-        <!-- बटन 3 -->
-        <button class="my-popup-btn" id="popup-btn3" onclick="openFlipModal(3)">
-            <i class="fa-solid fa-id-card"></i> Medical ID
-        </button>
-    </div>
-</div>
-
-<!-- फुल स्क्रीन पॉप-अप ओवरले -->
-<div class="my-modal-overlay" id="myModalOverlay" onclick="closeFlipModal(event)">
-    
-    <!-- 4 सेकंड का लोडिंग स्पिनर -->
-    <div class="my-loading-box" id="myLoadingBox">
-        <div class="my-spinner"></div>
-        <p>कृपया प्रतीक्षा करें...</p>
+    <div class="topbar">
+        <div class="flex items-center gap-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Indian_Army.svg/3840px-Flag_of_Indian_Army.svg.png" style="height:50px;">
+            <span style="font-size:12px;font-weight:700;"></span>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Ministry_of_Defence_India.svg" style="height:45px;">
     </div>
 
-    <!-- मुख्य कार्ड कंटेंट -->
-    <div class="my-modal-content" id="myModalContent" style="display: none;">
-        <!-- बंद करने का बटन -->
-        <button class="my-close-btn" onclick="toggleFlipModal(false)">&times;</button>
-        
-        <!-- फ्लिप होने वाला कार्ड -->
-        <div class="my-flip-card" id="myFlipCard" onclick="handleCardFlip(event)">
-            <div class="my-flip-card-inner">
-                <!-- अगला हिस्सा (Front) -->
-                <div class="my-flip-card-front">
-                    <img id="myFrontImg" src="" alt="Front Image">
-                </div>
-                <!-- पिछला हिस्सा (Back) -->
-                <div class="my-flip-card-back">
-                    <img id="myBackImg" src="" alt="Back Image">
-                </div>
+    <div class="content">
+        <div class="officer">
+            <h2 style="font-size:28px;font-weight:700;">Capt. Manish Chaudhary</h2>
+            <p style="color:#555;margin-top:6px;">Yudh Seva Medal, Sena Medal,<br>COAS Commendation</p>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCHloBHTkY8lAYNgE2CFaQOfVCH5jD9S3Y5EdnNKmLM3-n0Uv6wphxOW8ZmNw_frMef_XJ2RhyaELuYiZ7VqMQIhFJU6PdSsHUHIBWbklZZo_Qr5IX98Dk3BujZljBTAtO7PYS-5TaF8Ju36QeUfBQB-52lBDnRRNMtsTBr8gz8l4WetEL-Q9HUj6EwlO4/s523/Untitled%20design.jpeg">
+        </div>
+
+        <div class="table-box">
+            <table>
+                <tr><td>Allegiance</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/20px-Flag_of_India.svg.png"> India</span></td></tr>
+                <tr><td>Branch</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Flag_of_Indian_Army.svg/3840px-Flag_of_Indian_Army.svg.png"> Indian Army</span></td></tr>
+                <tr><td>Years of Service</td><td>13 June 2020 – Serving</td></tr>
+                <tr><td>Rank</td><td>Captain</td></tr>
+                <tr><td>Service ID</td><td>IC-80129D</td></tr>
+                <tr><td>Unit</td><td><span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Dogra_Regiment.svg/1280px-Dogra_Regiment.svg.png"> 18 Dogra</span></td></tr>
+                <tr><td>First Posting</td><td>Platoon Commander, Delta Company, Northern Command HQ, Udhampur, Jammu & Kashmir<br><b>Year 2020 - 2023</b></td></tr>
+                <tr><td>Currently Deployed</td><td>Staff Officer Grade II Operations (SO2 OPS) HQ I Corps Strike 1 Mathura U.P<br><b>Year 2023 - Present</b></td></tr>
+                <tr><td>Conflicts</td><td>• OPS Sindoor<br>• OPS Mahadev<br>• OPS Jammu Drill<br>• Counter-Insurgency OPS<br>• POK Border OPS</td></tr>
+                <tr><td>Awards</td><td>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Yudh_Seva_Medal_ribbon.svg/1280px-Yudh_Seva_Medal_ribbon.svg.png"> Yudh Seva Medal</span>
+                        <span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Sena_Medal_ribbon.svg/1280px-Sena_Medal_ribbon.svg.png"> Sena Medal</span>
+                        <span class="td-flex"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Army_Commander_Commendation_disc.png/1280px-Army_Commander_Commendation_disc.png"> COAS Commendation</span>
+                    </div>
+                </td></tr>
+            </table>
+        </div>
+
+        <div class="custom-btn-container">
+            <div class="my-button-row">
+                <button class="my-popup-btn" id="popup-btn1" onclick="openFlipModal(1)"><i class="fa-solid fa-id-card"></i> Defence ID</button>
+                <button class="my-popup-btn" id="popup-btn2" onclick="openFlipModal(2)"><i class="fa-solid fa-id-card"></i> CSD</button>
+                <button class="my-popup-btn" id="popup-btn3" onclick="openFlipModal(3)"><i class="fa-solid fa-id-card"></i> Medical ID</button>
             </div>
         </div>
-      
+
+        <div class="pdf-portal-container">
+            <div class="pdf-btn-row">
+                <button class="pdf-small-btn" id="pdf-btn1" onclick="openA4Modal(1)"><i class="fa-solid fa-file-pdf"></i> Permission</button>
+                <button class="pdf-small-btn" id="pdf-btn2" onclick="openA4Modal(2)"><i class="fa-solid fa-file-pdf"></i> Movement</button>
+                <button class="pdf-small-btn" id="pdf-btn3" onclick="openA4Modal(3)"><i class="fa-solid fa-file-pdf"></i> Health Ins.</button>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(1)">Educational & Military Training Background <span>+</span></div>
+            <div class="acc-body" id="acc1">
+                <ol style="padding-left:20px;">
+                    <li><strong>National Defence Academy (NDA)</strong>
+                        <ul style="padding-left:20px;margin-top:10px;">
+                            <li> ➤ Course: 135th Course</li>
+                            <li> ➤ Joined NDA: 2015</li>
+                            <li> ➤ Passing Out Parade (POP): 30 November 2018</li>
+                            <li> ➤ Reviewing Officer: Chief of Army Staff, General Bipin Rawat</li>
+                        </ul>
+                    </li><br>
+                    <li><strong>Indian Military Academy (IMA)</strong>
+                        <ul style="padding-left:20px;margin-top:10px;">
+                            <li> ➤ Course: 146th Regular Course, Delta Company</li>
+                            <li> ➤ Joined IMA: July 2018</li>
+                            <li> ➤ Passing Out Parade (POP): 13 June 2020</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(2)">Military Career & Commissioning <span>+</span></div>
+            <div class="acc-body" id="acc2">
+                <p><strong>Commission as Lieutenant</strong></p>
+                <ul style="padding-left:20px;margin-top:10px;">
+                    <li> ➤ Date: 13 June 2020</li>
+                    <li> ➤ First Posting: 18th Battalion, Dogra Infantry Regiment</li>
+                </ul><br>
+                <p><strong>Promotion to Captain</strong></p>
+                <ul style="padding-left:20px;margin-top:10px;">
+                    <li> ➤ Date: 13 June 2022</li>
+                    <li> ➤ Current Posting: HQ I Corps, Strike 1 Corps</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(3)">Awards & Recognitions <span>+</span></div>
+            <div class="acc-body" id="acc3">
+                <ol style="padding-left:20px;">
+                    <li><strong>Yudh Seva Medal (YSM)</strong><br>Conferred by the Hon’ble President of India on 26 January 2026.</li><br>
+                    <li><strong>Sena Medal (SM)</strong><br>Awarded on 26 January 2023.</li><br>
+                    <li><strong>COAS Commendation Badge</strong><br>Awarded by General Upendra Dwivedi on 15 August 2025.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(4)">Professional & Ceremonial Engagements <span>+</span></div>
+            <div class="acc-body" id="acc4"><strong>Ceremonial Duties:</strong> Parades, Official Conferences, and Outreach.</div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(5)">Professional Skills & Competencies <span>+</span></div>
+            <div class="acc-body" id="acc5"><ul style="padding-left:20px;"><li>Operational Leadership, Strategic Planning, and Administration.</li></ul></div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-head" onclick="toggleAcc(6)">Educational Qualification <span>+</span></div>
+            <div class="acc-body" id="acc6">
+                <ul style="padding-left:20px;">
+                    <li> ➤ B.Sc. from Jawaharlal Nehru University</li><br/>
+                    <li> ➤ Military Training at National Defence Academy</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/1920px-Emblem_of_India.svg.png" style="height:45px;filter:brightness(0) invert(1);margin-bottom:10px;">
+            <div>Integrated Headquarters of MoD (Army):</div>
+        </div>
     </div>
-</div>
-
-<!-- मुख्य बटन ब्लॉक (यह वेबसाइट के लेआउट को डिस्टर्ब नहीं करेगा) -->
-<div class="pdf-portal-container">
-    <div class="pdf-btn-row">
-        <!-- बटन 1 -->
-        <button class="pdf-small-btn" id="pdf-btn1" onclick="openA4Modal(1)">
-            <i class="fa-solid fa-file-pdf"></i> Permission
-        </button>
-
-        <!-- बटन 2 -->
-        <button class="pdf-small-btn" id="pdf-btn2" onclick="openA4Modal(2)">
-            <i class="fa-solid fa-file-pdf"></i> Movement
-        </button>
-
-        <!-- बटन 3 -->
-        <button class="pdf-small-btn" id="pdf-btn3" onclick="openA4Modal(3)">
-            <i class="fa-solid fa-file-pdf"></i> Health Ins.
-        </button>
-    </div>
-</div>
-
-<!-- फुल स्क्रीन पॉप-अप ओवरले (यह डिफ़ॉल्ट रूप से छुपा रहेगा) -->
-<div class="pdf-a4-overlay" id="pdfA4Overlay" onclick="closeA4ModalFromOverlay(event)">
-    <div class="pdf-a4-content" onclick="preventClose(event)">
-        <!-- बंद करने का क्रॉस बटन (X) -->
-        <button class="pdf-a4-close-btn" onclick="closeA4Modal()">&times;</button>
-        
-        <!-- स्क्रॉलिंग पीडीएफ फ्रेम - ए4 साइज में पूर्णतः सुसज्जित -->
-        <iframe id="pdfA4Frame" src="" allow="autoplay"></iframe>
-    </div>
-</div>
-
-<!-- ड्यूटी चार्ट पॉप-अप (सफ़ेद बॉक्स टेबल) -->
-<div class="duty-overlay" id="dutyChartOverlay" onclick="hideDutyChart()">
-    <div class="duty-box" onclick="event.stopPropagation(); hideDutyChart();">
-        <div class="duty-title">DELTA COMPANY DUTY CHART</div>
-        <table class="duty-table">
-            <thead>
-                <tr>
-                    <th>Personnel Name</th>
-                    <th>Date</th>
-                    <th>Duty</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Capt. Manish Chaudhary</td>
-                    <td>18 May 2026</td>
-                    <td>Supervising Officer</td>
-                    <td> 2200hrs - 1000hrs</td>
-                </tr>
-                <tr>
-                    <td>Sub. Rajesh Kumar</td>
-                    <td>18 May 2026</td>
-                    <td>Camp In-charge</td>
-                    <td> 2200hrs - 1000hrs </td>
-                </tr>
-                <tr>
-                    <td>Nb Sub. Amit Singh</td>
-                    <td>18 May 2026</td>
-                    <td>Quarter Guard</td>
-                    <td> 2200hrs - 1000hrs </td>
-                </tr>
-                <tr>
-                    <td>Hav. Vijay Yadav</td>
-                    <td>18 May 2026</td>
-                    <td>Patrol Commander</td>
-                    <td> 2200hrs - 1000hrs </td>
-                </tr>
-                <tr>
-                    <td>Nk. Deepak Thapa</td>
-                    <td>18 May 2026</td>
-                    <td>Night Sentry</td>
-                    <td> 2200hrs - 1000hrs </td>
-                </tr>
-                <tr>
-                    <td>L/Nk. Arun Sharma</td>
-                    <td>18 May 2026</td>
-                    <td>Standby Duty</td>
-                    <td> 2200hrs - 1000hrs </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- ACCORDIONS -->
-
-<div class="accordion">
-<div class="acc-head" onclick="toggleAcc(1)">
-Educational & Military Training Background
-<span>+</span>
-</div>
-
-<div class="acc-body" id="acc1">
-
-<ol style="padding-left:20px;">
-
-<li>
-<strong>National Defence Academy (NDA)</strong>
-
-<ul style="padding-left:20px;margin-top:10px;">
-<li> ➤ Course: 135th Course</li>
-<li> ➤ Joined NDA: 2015</li>
-<li> ➤ Passing Out Parade (POP): 30 November 2018 at Khetrapal Parade Ground, NDA Pune</li>
-<li> ➤ Reviewing Officer: Chief of Army Staff, General Bipin Rawat</li>
-<li> ➤ Highlights: NDA training equipped Capt. Chaudhary with a strong foundation in military science, leadership, and strategy.</li>
-</ul>
-</li>
-
-<br>
-
-<li>
-<strong>Indian Military Academy (IMA)</strong>
-
-<ul style="padding-left:20px;margin-top:10px;">
-<li> ➤ Course: 146th Regular Course, Delta Company</li>
-<li> ➤ Joined IMA: July 2018</li>
-<li> ➤ Passing Out Parade (POP): 13 June 2020 at Chetwode Drill Parade Ground, IMA Dehradun</li>
-<li> ➤ Highlights: IMA provided rigorous training in tactics, operational planning, and leadership.</li>
-</ul>
-</li>
-
-</ol>
-
-</div>
-</div>
-
-<div class="accordion">
-<div class="acc-head" onclick="toggleAcc(2)">
-Military Career & Commissioning
-<span>+</span>
-</div>
-
-<div class="acc-body" id="acc2">
-
-<p><strong>Commission as Lieutenant</strong></p>
-
-<ul style="padding-left:20px;margin-top:10px;">
-<li> ➤ Date: 13 June 2020</li>
-<li> ➤ First Posting: 18th Battalion, Dogra Infantry Regiment, Ashok Chakra Paltan, Jammu & Kashmir</li>
-</ul>
-
-<br>
-
-<p><strong>Promotion to Captain</strong></p>
-
-<ul style="padding-left:20px;margin-top:10px;">
-<li> ➤ Date: 13 June 2022</li>
-<li> ➤ Current Posting: HQ I Corps, Strike 1 Corps, Mathura, U.P</li>
-<li> ➤ Key Roles: Staff Officer Grade II Operations (SO2 OPS).</li>
-</ul>
-
-</div>
-</div>
-
-<div class="accordion">
-<div class="acc-head" onclick="toggleAcc(3)">
-Awards & Recognitions
-<span>+</span>
-</div>
-
-<div class="acc-body" id="acc3">
-
-<ol style="padding-left:20px;">
-<li><strong>Yudh Seva Medal (YSM)</strong><br>
-Conferred by the Hon’ble President of India, Droupadi Murmu, on 26 January 2026.</li>
-
-<br>
-
-<li><strong>Sena Medal (SM)</strong><br>
-Awarded on 26 January 2023 for distinguished service.</li>
-
-<br>
-
-<li><strong>COAS Commendation Badge</strong><br>
-Awarded by General Upendra Dwivedi on 15 August 2025.</li>
-</ol>
-
-</div>
-</div>
-
-<div class="accordion">
-<div class="acc-head" onclick="toggleAcc(4)">
-Professional & Ceremonial Engagements
-<span>+</span>
-</div>
-
-<div class="acc-body" id="acc4">
-<strong>Ceremonial Duties:</strong>
-Parades, Official Conferences, and Outreach.
-</div>
-</div>
-
-<div class="accordion">
-<div class="acc-head" onclick="toggleAcc(5)">
-Professional Skills & Competencies
-<span>+</span>
-</div>
-
-<div class="acc-body" id="acc5">
-
-<ul style="padding-left:20px;">
-<li>Operational Leadership, Strategic Planning, and Administration.</li>
-</ul>
-
-</div>
-</div>
-
-
-
-
-<div class="accordion">
-<div class="acc-head" onclick="toggleAcc(6)">
-Educational Qualification
-<span>+</span>
-</div>
-
-<div class="acc-body" id="acc6">
-
-<ul style="padding-left:20px;">
-<li> ➤ B.Sc. from Jawaharlal Nehru University</li><br/>
-<li> ➤ Military Training at National Defence Academy</li>
-</ul>
-
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-<div class="footer2">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/1920px-Emblem_of_India.svg.png"
-style="height:45px;filter:brightness(0) invert(1);margin-bottom:10px;">
-
-<div>
-2026, Ministry of Defence, Government of India
-</div>
-
-</div>
-
-</div>
 </div>
 
 <!-- FIXED TRICOLOR STRIPE -->
 <div id="tricolorStripe"></div>
 
+<!-- MODALS -->
+<div class="my-modal-overlay" id="myModalOverlay" onclick="closeFlipModal(event)">
+    <div class="my-modal-content" id="myModalContent" style="display: none;">
+        <button class="my-close-btn" onclick="toggleFlipModal(false)">&times;</button>
+        <div class="my-flip-card" id="myFlipCard" onclick="handleCardFlip(event)">
+            <div class="my-flip-card-inner">
+                <div class="my-flip-card-front"><img id="myFrontImg" src=""></div>
+                <div class="my-flip-card-back"><img id="myBackImg" src=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pdf-a4-overlay" id="pdfA4Overlay" onclick="closeA4ModalFromOverlay(event)">
+    <div class="pdf-a4-content" onclick="preventClose(event)">
+        <button class="pdf-a4-close-btn" onclick="closeA4Modal()">&times;</button>
+        <iframe id="pdfA4Frame" src="" allow="autoplay"></iframe>
+    </div>
+</div>
+
+<div class="duty-overlay" id="dutyChartOverlay" onclick="hideDutyChart()">
+    <div class="duty-box" onclick="event.stopPropagation(); hideDutyChart();">
+        <div class="duty-title">DELTA COMPANY DUTY CHART</div>
+        <table class="duty-table">
+            <thead><tr><th>Personnel Name</th><th>Date</th><th>Duty</th><th>Time</th></tr></thead>
+            <tbody>
+                <tr><td>Capt. Manish Chaudhary</td><td>18 May 2026</td><td>Supervising Officer</td><td> 2200hrs - 1000hrs</td></tr>
+                <tr><td>Sub. Rajesh Kumar</td><td>18 May 2026</td><td>Camp In-charge</td><td> 2200hrs - 1000hrs </td></tr>
+                <tr><td>Nb Sub. Amit Singh</td><td>18 May 2026</td><td>Quarter Guard</td><td> 2200hrs - 1000hrs </td></tr>
+                <tr><td>Hav. Vijay Yadav</td><td>18 May 2026</td><td>Patrol Commander</td><td> 2200hrs - 1000hrs </td></tr>
+                <tr><td>Nk. Deepak Thapa</td><td>18 May 2026</td><td>Night Sentry</td><td> 2200hrs - 1000hrs </td></tr>
+                <tr><td>L/Nk. Arun Sharma</td><td>18 May 2026</td><td>Standby Duty</td><td> 2200hrs - 1000hrs </td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <script>
-
-window.onload=function(){
-
-setTimeout(()=>{
-
-document.getElementById("preloader").style.display="none";
-document.getElementById("branchSelectionPage").style.display="block";
-
-},5000);
-
+window.onload = function() {
+    setTimeout(() => {
+        document.getElementById("preloader").style.display = "none";
+        document.getElementById("branchSelectionPage").style.display = "block";
+    }, 5000);
 }
 
-/* ड्रॉपडाउन खोलने का फंक्शन */
 function toggleBranchDropdown() {
     document.getElementById("branchList").classList.toggle("show");
 }
 
-/* ब्रांच चुनने के बाद लॉगिन पेज पर ले जाने का फंक्शन */
 function goToLogin(selectedBranch) {
-    // 1. ड्रॉपडाउन वाला पेज छुपाएं
     document.getElementById("branchSelectionPage").style.display = "none";
-    
-    // 2. 4 सेकंड का GIF लोडर दिखाएं
     document.getElementById("branchGifLoader").style.display = "flex";
 
-    // 3. चुनी गई ब्रांच के अनुसार बैकग्राउंड इमेज सेट करें
     let bgUrl = "";
-    
     if (selectedBranch === 'ARMY') {
-        // आर्मी का बैकग्राउंड (पुराना वाला)
         bgUrl = "url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqgCeQ8UGffw5_hqtpZf-Ovwnqer6ttaPTCoN0PUIfJ8ez1-Qv7YYURFsIqaaR2o5BMztQ3ArxPw8Gq3h7K5XtDsWpgaQTszYmKvZ08COEQQOk_kePN6adKtA8UX6MNCIHbn-JJjEaspit3jJJi0ooyW5iSNVi9TJ_66yFdF8Ba0SjfOtW15Gh5wYJFR5h/s4095/EBB1227C-14D0-46E6-8CA6-7480536E8D5E.jpeg')";
     } else if (selectedBranch === 'NAVY') {
-        // यहाँ नेवी का बैकग्राउंड लिंक डालें
         bgUrl = "url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiepnaBlSM2ebXUrT2mjtaBShFdyNe4-yMNqwLeghp7_S5c1qP89Mj1OkFXzSy1O-fI9YYQ2idja6Dx3uAZbVarCt9ovzrixj1JLj4C5klzCS9u0LkRZWL1hLyGAEL4X0wWooa2AVdLDsd-mkNjJO8UqGKE6As_9bN5XU79JE3D04iIsYVmFdUoFm_pS1YK/s4096/C66F13B7-410B-4351-A442-690ECC09A62E.jpeg')"; 
     } else if (selectedBranch === 'AIRFORCE') {
-        // यहाँ एयर फाॅर्स का बैकग्राउंड लिंक डालें
         bgUrl = "url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYEF3KCrS4obj8QNE-EL1MyU_8iBu-2IrW08atJs8MTXMvMWCl257gSjYErEMPmy-kELbmktMGnIVo5I-oI3qLQz9EFqmB3GrOJ7PJEvcyOEXji-I7DswXK10YDorR-sFNqfpQXVBc5ZdQ2J1YjxtQFbG-gzw-E3zJe2fg4b0V_SDd3CCXlsEQUGu0HIFM/s4096/9C7AA421-FAB2-4683-9AFE-FEBE4F75EB30.jpeg')"; 
     }
 
     document.getElementById("loginPage").style.backgroundImage = bgUrl;
     
-    // 4. ठीक 4 सेकंड बाद लोडिंग GIF हटाकर लॉगिन पेज दिखाएं
     setTimeout(() => {
         document.getElementById("branchGifLoader").style.display = "none";
         document.getElementById("loginPage").style.display = "block";
     }, 4000);
 }
 
-function loginNow(){
-
-let id=document.getElementById("serviceID").value.trim().toUpperCase();
-
-if(id==="IC80129D" || id==="IC-80129D"){
-
-document.getElementById("loading").style.display="flex";
-
-setTimeout(()=>{
-
-document.getElementById("loading").style.display="none";
-document.getElementById("loginPage").style.display="none";
-document.getElementById("dashboard").style.display="block";
-document.getElementById("tricolorStripe").style.display="block"; /* लॉगिन होने पर दिखाई देगी */
-
-// डैशबोर्ड खुलने पर ड्यूटी चार्ट पॉपअप दिखाएं
-showDutyChart();
-
-feather.replace();
-
-},4000);
-
-}else{
-
-document.getElementById("error").style.display="block";
-
-setTimeout(()=>{
-document.getElementById("error").style.display="none";
-},2000);
-
+function loginNow() {
+    let id = document.getElementById("serviceID").value.trim().toUpperCase();
+    if(id === "IC80129D" || id === "IC-80129D") {
+        document.getElementById("loading").style.display = "flex";
+        setTimeout(() => {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("loginPage").style.display = "none";
+            document.getElementById("dashboard").style.display = "block";
+            document.getElementById("tricolorStripe").style.display = "block";
+            showDutyChart();
+            if(window.feather) feather.replace();
+        }, 4000);
+    } else {
+        document.getElementById("error").style.display = "block";
+        setTimeout(() => { document.getElementById("error").style.display = "none"; }, 2000);
+    }
 }
 
+function backToBranch() {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("branchGifLoader").style.display = "flex";
+    setTimeout(() => {
+        document.getElementById("branchGifLoader").style.display = "none";
+        document.getElementById("branchSelectionPage").style.display = "block";
+        document.getElementById("branchList").classList.remove("show");
+        document.getElementById("serviceID").value = "";
+    }, 3000);
 }
 
-function toggleAcc(num){
-
-let box=document.getElementById("acc"+num);
-
-if(box.style.display==="block"){
-box.style.display="none";
-}else{
-box.style.display="block";
+function toggleAcc(num) {
+    let box = document.getElementById("acc" + num);
+    box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
-}
+function showDutyChart() { document.getElementById("dutyChartOverlay").style.display = "flex"; }
+function hideDutyChart() { document.getElementById("dutyChartOverlay").style.display = "none"; }
 
-// ड्यूटी चार्ट पॉपअप दिखाने और छिपाने के फंक्शंस
-function showDutyChart() {
-    document.getElementById("dutyChartOverlay").style.display = "flex";
-}
+if(window.feather) feather.replace();
 
-function hideDutyChart() {
-    document.getElementById("dutyChartOverlay").style.display = "none";
-}
-
-feather.replace();
-
-// तीनों बटनों के लिए अलग-अलग इमेजेस का डेटा
 const customImageData = {
     1: {
         front: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpBW4eRg4MH1d-Tk1Z02s6V8XWJijJaVF2fKuHkUBJF1BOGpf2HaK8zUCq9fsGpRixt2PSrHCjA_F2Sm9uhShFN8MCXKgx1oN7f3kVvBOLp-IQ4gPgh1wFrg_t0zFCIhRMKKeIrQkW_IwEsfv8_fP-0hGI3zMf3IiK78PG6hydB8BLxKH888vohHddxy1M/s1588/IMG_5797.jpeg",
@@ -1575,10 +1173,8 @@ const customImageData = {
     }
 };
 
-// पॉप-अप खोलने का फंक्शन (4 सेकंड लोडिंग के साथ)
 function openFlipModal(btnNumber) {
     const modal = document.getElementById('myModalOverlay');
-    const loadingBox = document.getElementById('myLoadingBox');
     const modalContent = document.getElementById('myModalContent');
     const frontImg = document.getElementById('myFrontImg');
     const backImg = document.getElementById('myBackImg');
@@ -1586,93 +1182,60 @@ function openFlipModal(btnNumber) {
 
     if (card) card.classList.remove('flipped');
 
-    // इमेज सोर्स सेट करें
     if (frontImg && backImg && customImageData[btnNumber]) {
         frontImg.src = customImageData[btnNumber].front;
         backImg.src = customImageData[btnNumber].back;
     }
 
-    // शुरुआत में सिर्फ लोडिंग बॉक्स दिखेगा, इमेज कंटेंट छुपा रहेगा
-    if (loadingBox) loadingBox.style.setProperty('display', 'flex', 'important');
     if (modalContent) modalContent.style.setProperty('display', 'none', 'important');
     if (modal) modal.style.display = 'flex';
 
-    // ठीक 4 सेकंड (4000 मिलीसेकंड) के बाद लोडिंग हटेगी और इमेज आएगी
     setTimeout(function() {
-        if (loadingBox) loadingBox.style.setProperty('display', 'none', 'important');
         if (modalContent) modalContent.style.setProperty('display', 'flex', 'important');
     }, 4000); 
 }
 
-// पॉप-अप बंद करने का फंक्शन
 function toggleFlipModal(show) {
     const modal = document.getElementById('myModalOverlay');
     if (modal) modal.style.display = show ? 'flex' : 'none';
 }
 
-// कार्ड फ्लिप करने का फंक्शन
 function handleCardFlip(event) {
     event.stopPropagation(); 
     const card = document.getElementById('myFlipCard');
     if (card) card.classList.toggle('flipped');
 }
 
-// बाहर काले हिस्से पर क्लिक करने पर बंद करने का फंक्शन
 function closeFlipModal(event) {
-    if (event.target.id === 'myModalOverlay') {
-        toggleFlipModal(false);
-    }
+    if (event.target.id === 'myModalOverlay') toggleFlipModal(false);
 }
 
-
-// आपके निर्देशानुसार सीधा (.pdf) लिंक फॉर्मेट
 const directPdfLinks = {
     1: "https://nondisclosureagreement.com/wp-content/uploads/2020/11/Basic-Non-Disclosure-Agreement.pdf", 
     2: "https://example.com/documents/file2.pdf", 
     3: "https://example.com/documents/file3.pdf"  
 };
 
-// पॉप-अप खोलने का फंक्शन
 function openA4Modal(btnNumber) {
     const overlay = document.getElementById('pdfA4Overlay');
     const pdfFrame = document.getElementById('pdfA4Frame');
-
-    if (pdfFrame && directPdfLinks[btnNumber]) {
-        // संबंधित बटन का सीधा पीडीएफ लिंक आईफ्रेम में सेट करना
-        pdfFrame.src = directPdfLinks[btnNumber];
-    }
-
-    if (overlay) {
-        overlay.style.setProperty('display', 'flex', 'important');
-    }
+    if (pdfFrame && directPdfLinks[btnNumber]) pdfFrame.src = directPdfLinks[btnNumber];
+    if (overlay) overlay.style.setProperty('display', 'flex', 'important');
 }
 
-// पॉप-अप बंद करने का मुख्य फंक्शन
 function closeA4Modal() {
     const overlay = document.getElementById('pdfA4Overlay');
     const pdfFrame = document.getElementById('pdfA4Frame');
-    
-    if (overlay) {
-        overlay.style.setProperty('display', 'none', 'important');
-    }
-    if (pdfFrame) {
-        pdfFrame.src = ""; // बंद होने पर पीडीएफ को रोक देना ताकि बैकग्राउंड में डेटा या ऑडियो लोड न रहे
-    }
+    if (overlay) overlay.style.setProperty('display', 'none', 'important');
+    if (pdfFrame) pdfFrame.src = ""; 
 }
 
-// स्क्रीन पर (काले हिस्से पर) कहीं भी क्लिक करने पर बंद करने का लॉजिक
 function closeA4ModalFromOverlay(event) {
-    if (event.target.id === 'pdfA4Overlay') {
-        closeA4Modal();
-    }
+    if (event.target.id === 'pdfA4Overlay') closeA4Modal();
 }
 
-// जब विज़िटर PDF के अंदर क्लिक या स्क्रॉल करे तो पॉप-अप बंद न हो, उसके लिए प्रोटेक्शन
-function preventClose(event) {
-    event.stopPropagation();
-}
+function preventClose(event) { event.stopPropagation(); }
 
 </script>
-
 </body>
 </html>

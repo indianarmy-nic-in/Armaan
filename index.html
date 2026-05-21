@@ -48,6 +48,8 @@
         overflow-x: hidden;
         background-color: #ffffff;
         font-family: 'Poppins', sans-serif;
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
         
         -webkit-touch-callout: none; /* मोबाइल पर लॉन्ग-प्रेस मेनू डिसेबल करें */
         -webkit-user-select: none;
@@ -76,9 +78,8 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
+        width: 100%;
+        height: 100%;
         z-index: 99999;
         display: flex;
         align-items: center;
@@ -137,7 +138,6 @@
         display: none;
         width: 100%;
         height: 100vh;
-        height: 100dvh;
         position: fixed;
         top: 0;
         left: 0;
@@ -220,9 +220,8 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
+        width: 100%;
+        height: 100%;
         background: rgba(0,0,0,0.9);
         z-index: 999999;
         justify-content: center;
@@ -250,7 +249,6 @@
         display: none;
         width: 100%;
         min-height: 100vh;
-        min-height: 100dvh;
         background: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=');
         background-size: cover;
         background-position: center;
@@ -476,9 +474,8 @@
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        height: 100dvh !important;
+        width: 100% !important;
+        height: 100% !important;
         background: rgba(0, 0, 0, 0.85) !important;
         backdrop-filter: blur(5px) !important;
         display: none;
@@ -612,9 +609,8 @@
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        height: 100dvh !important;
+        width: 100% !important;
+        height: 100% !important;
         background: rgba(26, 26, 26, 0.9) !important;
         display: none;
         justify-content: center !important;
@@ -676,9 +672,8 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
+        width: 100%;
+        height: 100%;
         background: rgba(0, 0, 0, 0.75);
         z-index: 100005;
         display: none;
@@ -710,25 +705,32 @@
     .duty-table td { padding: 10px 8px; border: 1px solid #ddd; font-size: 12px; color: #333; }
     .duty-table tr:nth-child(even) { background: #fafafa; }
 
-    /* BRANCH SELECTION - इसमें ऊपर सफ़ेद पट्टी सेट की गई है */
+    /* BRANCH SELECTION */
     #branchSelectionPage {
         display: none;
         width: 100%;
         height: 100vh;
-        height: 100dvh;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 99990; 
         overflow: hidden;
-        background-color: #ffffff; /* iPhone के टॉप आइकॉन के लिए सफ़ेद बैकग्राउंड */
+    }
+    .branch-top-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #ffffff;
+        z-index: 5;
     }
     .branch-bg {
         position: absolute;
-        top: env(safe-area-inset-top); /* सफ़ेद पट्टी के नीचे से चित्र शुरू होगा */
+        top: 60px;
         left: 0;
         width: 100%;
-        height: calc(100% - env(safe-area-inset-top)); /* बची हुई पूरी स्क्रीन कवर करेगा */
+        height: calc(100% - 60px);
         background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKgvHIOA3VBTdiVp3tmilm5SToN-JvMGEej1muyZKTT-IqCyC6a4gxw8R8AySnVNe5PgkCczt1Po0J82jsrfz7rFAkE0GWrAjsCcFJA7w4WvCWIyYxJw0UlhckrwhHztuOmIhGKtQFdCjnbGfp9DZcQ380RGNWF686LaYKlNCTXEWqA90xrw091jfrRU8a/s1920/Add%20a%20heading.jpeg') center/cover;
     }
     .branch-box {
@@ -834,7 +836,6 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        height: 100dvh;
         background: #fff;
         z-index: 999999;
         justify-content: center;
@@ -872,6 +873,7 @@
 
 <!-- BRANCH SELECTION -->
 <div id="branchSelectionPage">
+    <div class="branch-top-bar"></div>
     <div class="branch-bg"></div>
     <div class="branch-box">
         <div style="color:#fff; text-align:center; margin-bottom:15px; font-weight:700; font-size:18px;">BRANCH / SERVICE</div>

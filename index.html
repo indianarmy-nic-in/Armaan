@@ -36,12 +36,14 @@
 
     /* 🚫 एंटी-सेव और एंटी-कॉपी प्रोटेक्शन (कोई भी चित्र सेव नहीं हो सकेगा) */
     html, body {
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-        background-color: #ffffff;
-        font-family: 'Poppins', sans-serif;
-        padding-bottom: env(safe-area-inset-bottom);
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
         
         -webkit-touch-callout: none; /* मोबाइल पर लॉन्ग-प्रेस मेनू डिसेबल करें */
         -webkit-user-select: none;
@@ -237,15 +239,17 @@
     }
 
     /* DASHBOARD */
-    #dashboard {
-        display: none;
-        width: 100%;
-        min-height: 100vh;
-        background: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=');
-        background-size: cover;
-        background-position: center;
-        padding-bottom: 65px;
-    }
+
+#dashboard {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    background: url('https://media.istockphoto.com/id/1297933144/vector/vector-illustration-of-indian-tricolor-flag-background.jpg?s=612x612&w=0&k=20&c=tCd-ZdLMNHw_KAMZTX9zStqEDdWzXlS6FYrvjrZIswk=');
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 8px;
+    overflow-x: hidden;
+}
 
     /* TOPBAR - FIXED TO PREVENT SCROLL BLEED */
     .topbar {

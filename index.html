@@ -6,21 +6,17 @@
     
     <title>IAFZ - Indian Armed Forces</title>
 
-    <!-- Icons -->
     <link rel="apple-touch-icon" sizes="152x152" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5c8fQphzonm87AQhPjECMXK2wLcdtKHwym_04wu_aFRw0ljTD-VVSTLx8tbK571K5uTpfcBqz4vIQw1bhIyfspls4A7xkG_Wr4bbJeQiBJcmQqPHjnb5RDn692A_bXei3QpppZ9xmaqiUwVWUpITgIkx2MCTVtPTzK-4gRZuaYMDBUyK7UfylvlQKJ0hD/s512/Untitled%20design.jpeg">
     <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5c8fQphzonm87AQhPjECMXK2wLcdtKHwym_04wu_aFRw0ljTD-VVSTLx8tbK571K5uTpfcBqz4vIQw1bhIyfspls4A7xkG_Wr4bbJeQiBJcmQqPHjnb5RDn692A_bXei3QpppZ9xmaqiUwVWUpITgIkx2MCTVtPTzK-4gRZuaYMDBUyK7UfylvlQKJ0hD/s512/Untitled%20design.jpeg">
     <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIghnd81b4IV_bCotk87s2-47fScJBJLe3NjpD2sQmst1Efhh04vR6P6TmZde2BSYc6_TJ1fNdrb7Yc4osE3VsEMghyDYEyXKDUKJQZo8vv71iH6wpaFAnop99Yv4k50u9xRMqQucYLqtKZ1Pages/s32/Untitled%20design.jpeg">
 
-    <!-- === iOS (Apple Safari) Fullscreen Settings === -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="IAFZ">
     <meta name="theme-color" content="#000000">
 
-    <!-- Android / Chrome के लिए PWA Manifest लिंक -->
     <link rel="manifest" href="manifest.json">
 
-    <!-- Scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -43,8 +39,7 @@
     overflow-x: hidden;
     background-color: #ffffff;
     font-family: 'Poppins', sans-serif;
-}
-        
+    
         -webkit-touch-callout: none; /* मोबाइल पर लॉन्ग-प्रेस मेनू डिसेबल करें */
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -636,7 +631,7 @@
         transform: rotateY(180deg) !important;
     }
 
-    /* PDF PORTAL */
+    /* A4 PORTAL CSS UPDATED FOR IMAGES */
     .pdf-portal-container {
         width: 100% !important;
         max-width: 400px !important;
@@ -708,24 +703,26 @@
         max-width: 450px !important;
         height: 80vh !important;
         max-height: 636px !important;
-        background: white !important;
+        background: transparent !important;
         box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important;
         border-radius: 8px !important;
         overflow: hidden !important;
         box-sizing: border-box !important;
     }
 
-    .pdf-a4-content iframe {
+    .pdf-a4-content img {
         width: 100% !important;
         height: 100% !important;
         border: none !important;
         display: block !important;
+        object-fit: contain !important; /* Ensures the whole A4 image fits inside */
+        background: white !important;
     }
 
     .pdf-a4-close-btn {
         position: absolute !important;
-        top: -45px !important;
-        right: 0px !important;
+        top: 10px !important;
+        right: 10px !important;
         color: #ff3333 !important;
         background: #ffffff !important;
         width: 32px !important;
@@ -936,7 +933,6 @@
 
 <body oncontextmenu="return false">
 
-<!-- PRELOADER -->
 <div id="preloader">
     <div class="logo-box">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Flag_of_the_Indian_Armed_Forces.svg/3840px-Flag_of_the_Indian_Armed_Forces.svg.png" alt="Preloader Image">
@@ -944,7 +940,6 @@
     <div class="loader-text">INDIAN ARMED FORCES</div>
 </div>
 
-<!-- BRANCH SELECTION -->
 <div id="branchSelectionPage">
     <div class="branch-bg"></div>
     <div class="branch-box">
@@ -972,12 +967,10 @@
     </div>
 </div>
 
-<!-- GIF LOADER -->
 <div id="branchGifLoader">
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgld2AVe57NTcm9Lu0r-9SMHFHvQVCpCwuiS4t6rdZZ8HFk79DVFKm7rcWnE4vT6HjisZTQ1bDNhnfNoWnucFtbgIYWv3OdkXgDOgxQ5Ojr8J4GqFgjWjA45FvePdvXp1QWC76qVaF1jp0FSsmrFJvDDC2N64RgRWFbHJfliU5znXaCsKRppNQj77rcPgyI/s256/Video.gif" alt="Loading...">
 </div>
 
-<!-- LOGIN -->
 <div id="loginPage">
     <div class="login-box">
         <div id="error" style="display:none;color:#ff4d4d;font-size:12px;margin-bottom:10px;font-weight:700;text-align:center;">
@@ -991,13 +984,11 @@
     </div>
 </div>
 
-<!-- LOADING -->
 <div id="loading">
     <div class="spin"></div>
     <div>AUTHENTICATING...</div>
 </div>
 
-<!-- DASHBOARD -->
 <div id="dashboard">
     <div class="topbar">
         <div class="flex items-center gap-2">
@@ -1009,7 +1000,6 @@
 
     <div class="content">
         <div class="officer">
-            <!-- STORY STATUS CIRCLE ADDED HERE -->
             <div class="story-circle" onclick="openStory()">
                 <div class="story-circle-inner">DUTY<br>Schedule</div>
             </div>
@@ -1063,9 +1053,9 @@
 
         <div class="pdf-portal-container">
             <div class="pdf-btn-row">
-                <button class="pdf-small-btn" id="pdf-btn1" onclick="openA4Modal(1)"><i class="fa-solid fa-file-pdf"></i> Permission</button>
-                <button class="pdf-small-btn" id="pdf-btn2" onclick="openA4Modal(2)"><i class="fa-solid fa-file-pdf"></i> Movement</button>
-                <button class="pdf-small-btn" id="pdf-btn3" onclick="openA4Modal(3)"><i class="fa-solid fa-file-pdf"></i> Health Ins.</button>
+                <button class="pdf-small-btn" id="pdf-btn1" onclick="openA4Modal(1)"><i class="fa-solid fa-file-image"></i> Permission</button>
+                <button class="pdf-small-btn" id="pdf-btn2" onclick="openA4Modal(2)"><i class="fa-solid fa-file-image"></i> Movement</button>
+                <button class="pdf-small-btn" id="pdf-btn3" onclick="openA4Modal(3)"><i class="fa-solid fa-file-image"></i> Health Ins.</button>
             </div>
         </div>
 
@@ -1119,7 +1109,7 @@
                 <ol style="padding-left:20px;">
                     <li><strong>Yudh Seva Medal (YSM)</strong><br>Conferred by the Hon’ble President of India on 26 January 2026.</li><br>
 
-<li><strong>COAS Commendation Badge</strong><br>Awarded by Hon’ble Chied of Army Staff  General Upendra Dwivedi on 15 August 2025.</li><br/>
+<li><strong>COAS Commendation Badge</strong><br>Awarded by Hon’ble Chief of Army Staff (COAS) General Upendra Dwivedi on 15 August 2025.</li><br/>
 
                     <li><strong>Sena Medal (SM)</strong><br> Conferred by the Hon’ble President of India on 26 January 2023.</li><br>
                  
@@ -1141,8 +1131,7 @@
             <div class="acc-head" onclick="toggleAcc(6)">Educational Qualification <span>+</span></div>
             <div class="acc-body" id="acc6">
                 <ul style="padding-left:20px;">
-                    <li> ➤ B.Sc. from Jawaharlal Nehru University</li><br/>
-                    <li> ➤ Military Training at National Defence Academy</li>
+                    <li> ➤ Graduated from the National Defence Academy, Pune, earning a Bachelor of Science (B.Sc.) degree awarded by Jawaharlal Nehru University, New Delhi. </li>
                 </ul>
             </div>
         </div>
@@ -1154,10 +1143,8 @@
     </div>
 </div>
 
-<!-- FIXED TRICOLOR STRIPE -->
 <div id="tricolorStripe"></div>
 
-<!-- MODALS -->
 <div class="my-modal-overlay" id="myModalOverlay" onclick="closeFlipModal(event)">
     <div class="my-modal-content" id="myModalContent" style="display: none;">
         <button class="my-close-btn" onclick="toggleFlipModal(false)">&times;</button>
@@ -1170,27 +1157,13 @@
     </div>
 </div>
 
-<div class="pdf-a4-overlay" id="pdfA4Overlay" onclick="closeA4ModalFromOverlay(event)">
-    <div class="pdf-a4-content" onclick="preventClose(event)">
+<div class="pdf-a4-overlay" id="pdfA4Overlay" onclick="closeA4Modal()">
+    <div class="pdf-a4-content">
         <button class="pdf-a4-close-btn" onclick="closeA4Modal()">&times;</button>
-        <iframe id="pdfA4Frame" src="" allow="autoplay"></iframe>
+        <img id="pdfA4Image" src="" alt="Document Image">
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- NEW STORY STATUS POPUP -->
 <div class="story-overlay" id="storyOverlay" 
      onmousedown="pauseStory()" onmouseup="resumeStory()" 
      ontouchstart="pauseStory()" ontouchend="resumeStory()">
@@ -1332,31 +1305,28 @@ function closeFlipModal(event) {
     if (event.target.id === 'myModalOverlay') toggleFlipModal(false);
 }
 
-const directPdfLinks = {
-    1: "https://nondisclosureagreement.com/wp-content/uploads/2020/11/Basic-Non-Disclosure-Agreement.pdf", 
-    2: "https://example.com/documents/file2.pdf", 
-    3: "https://example.com/documents/file3.pdf"  
+/* UPDATED IMAGE LINKS (आप यहाँ अपनी A4 इमेजेज़ के लिंक डाल सकते हैं) */
+const customA4Images = {
+    1: "https://via.placeholder.com/794x1123/cccccc/000000?text=Permission+Document+Image", 
+    2: "https://via.placeholder.com/794x1123/dddddd/000000?text=Movement+Document+Image", 
+    3: "https://via.placeholder.com/794x1123/eeeeee/000000?text=Health+Insurance+Image"  
 };
 
 function openA4Modal(btnNumber) {
     const overlay = document.getElementById('pdfA4Overlay');
-    const pdfFrame = document.getElementById('pdfA4Frame');
-    if (pdfFrame && directPdfLinks[btnNumber]) pdfFrame.src = directPdfLinks[btnNumber];
+    const pdfImage = document.getElementById('pdfA4Image');
+    if (pdfImage && customA4Images[btnNumber]) {
+        pdfImage.src = customA4Images[btnNumber];
+    }
     if (overlay) overlay.style.setProperty('display', 'flex', 'important');
 }
 
 function closeA4Modal() {
     const overlay = document.getElementById('pdfA4Overlay');
-    const pdfFrame = document.getElementById('pdfA4Frame');
+    const pdfImage = document.getElementById('pdfA4Image');
     if (overlay) overlay.style.setProperty('display', 'none', 'important');
-    if (pdfFrame) pdfFrame.src = ""; 
+    if (pdfImage) pdfImage.src = ""; 
 }
-
-function closeA4ModalFromOverlay(event) {
-    if (event.target.id === 'pdfA4Overlay') closeA4Modal();
-}
-
-function preventClose(event) { event.stopPropagation(); }
 
 
 /* NEW STORY STATUS SCRIPT */
